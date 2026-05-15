@@ -13,4 +13,5 @@ echo "export PATH=/opt/bin:\$PATH" >> ~/.profile
 
 source ~/.profile
 
+echo "MANDATORY_MANPATH /opt/share/man" >> ~/.manpath
 
