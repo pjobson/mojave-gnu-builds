@@ -1,0 +1,11 @@
+prefix=/opt
+exec_prefix=/opt
+libdir=/opt/lib
+includedir=/opt/include
+
+Name: uuid
+Description: Universally unique id library
+Version: 2.42.0
+Cflags: -I${includedir}/uuid
+Libs.private:  -lpthread
+Libs: -L${libdir} -luuid

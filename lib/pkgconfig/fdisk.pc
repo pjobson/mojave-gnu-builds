@@ -1,0 +1,11 @@
+prefix=/opt
+exec_prefix=/opt
+libdir=/opt/lib
+includedir=/opt/include
+
+Name: fdisk
+Description: fdisk library
+Version: 2.42.0
+Requires.private: uuid blkid
+Cflags: -I${includedir}/libfdisk
+Libs: -L${libdir} -lfdisk

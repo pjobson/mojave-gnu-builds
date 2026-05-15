@@ -1,0 +1,10 @@
+prefix=/opt
+exec_prefix=/opt
+libdir=/opt/lib
+includedir=/opt/include
+
+Name: smartcols
+Description: table or tree library
+Version: 2.42.0
+Cflags: -I${includedir}/libsmartcols
+Libs: -L${libdir} -lsmartcols
