@@ -1,0 +1,819 @@
+This is texi2any_internals.info, produced by texi2any version 7.3+nc
+from texi2any_internals.texi.
+
+INFO-DIR-SECTION Texinfo documentation system
+START-INFO-DIR-ENTRY
+* texi2any modules: (texi2any_internals).
+                                Texinfo Perl modules used in texi2any
+END-INFO-DIR-ENTRY
+
+
+Indirect:
+texi2any_internals.info-1: 299
+texi2any_internals.info-2: 301115
+
+Tag Table:
+(Indirect)
+Node: Top299
+Node: Texinfo::Commands13152
+Node: Texinfo::Commands NAME13642
+Node: Texinfo::Commands SYNOPSIS13868
+Node: Texinfo::Commands NOTES14227
+Node: Texinfo::Commands DESCRIPTION14592
+Node: Texinfo::Commands @-COMMAND INFORMATION14948
+Ref: Texinfo::Commands %index_names15296
+Node: Texinfo::Commands @-COMMAND CLASSES15533
+Ref: Texinfo::Commands %accent_commands15972
+Ref: Texinfo::Commands %block_commands16121
+Ref: Texinfo::Commands _conditional_16219
+Ref: Texinfo::Commands _def_16263
+Ref: Texinfo::Commands _float_16327
+Ref: Texinfo::Commands _format_raw_16371
+Ref: Texinfo::Commands _item_container_16468
+Ref: Texinfo::Commands _item_line_16594
+Ref: Texinfo::Commands _menu_16705
+Ref: Texinfo::Commands _math_16798
+Ref: Texinfo::Commands _multitable_16874
+Ref: Texinfo::Commands _other_16918
+Ref: Texinfo::Commands _preformatted_16980
+Ref: Texinfo::Commands _quotation_17103
+Ref: Texinfo::Commands _raw_17158
+Ref: Texinfo::Commands _region_17309
+Ref: Texinfo::Commands %blockitem_commands17486
+Ref: Texinfo::Commands %brace_code_commands17658
+Ref: Texinfo::Commands %brace_commands17759
+Ref: Texinfo::Commands %close_paragraph_commands18008
+Ref: Texinfo::Commands %commands_args_number18145
+Ref: Texinfo::Commands %contain_basic_inline_commands18908
+Ref: Texinfo::Commands %contain_plain_text_commands19103
+Ref: Texinfo::Commands %def_commands19204
+Ref: Texinfo::Commands %default_index_commands19256
+Ref: Texinfo::Commands %explained_commands19371
+Ref: Texinfo::Commands %formattable_line_commands19552
+Ref: Texinfo::Commands %formatted_nobrace_commands19960
+Ref: Texinfo::Commands %formatted_line_commands20295
+Ref: Texinfo::Commands %heading_spec_commands20723
+Ref: Texinfo::Commands %in_heading_spec_commands20826
+Ref: Texinfo::Commands %in_index_commands20964
+Ref: Texinfo::Commands %inline_conditional_commands21087
+Ref: Texinfo::Commands %inline_format_commands21112
+Ref: Texinfo::Commands %letter_no_arg_commands21275
+Ref: Texinfo::Commands %math_commands21414
+Ref: Texinfo::Commands %line_commands21508
+Ref: Texinfo::Commands %no_paragraph_commands21971
+Ref: Texinfo::Commands %nobrace_commands22036
+Ref: Texinfo::Commands %non_formatted_block_commands22529
+Ref: Texinfo::Commands %non_formatted_brace_commands22648
+Ref: Texinfo::Commands %preamble_commands22803
+Ref: Texinfo::Commands %preformatted_commands22875
+Ref: Texinfo::Commands %preformatted_code_commands22904
+Ref: Texinfo::Commands %ref_commands23157
+Ref: Texinfo::Commands %root_commands23262
+Ref: Texinfo::Commands %sectioning_heading_commands23445
+Ref: Texinfo::Commands %variadic_commands23512
+Node: Texinfo::Commands SEE ALSO23575
+Node: Texinfo::Commands AUTHOR23855
+Node: Texinfo::Commands COPYRIGHT AND LICENSE24122
+Node: Texinfo::CommandsValues24687
+Node: Texinfo::CommandsValues NAME25218
+Node: Texinfo::CommandsValues SYNOPSIS25503
+Node: Texinfo::CommandsValues NOTES25863
+Node: Texinfo::CommandsValues DESCRIPTION26264
+Node: Texinfo::CommandsValues @-COMMAND ASSOCIATED INFORMATION26691
+Ref: Texinfo::CommandsValues %nobrace_symbol_text27095
+Ref: Texinfo::CommandsValues %text_brace_no_arg_commands27295
+Ref: Texinfo::CommandsValues %unicode_diacritics27466
+Node: Texinfo::CommandsValues SEE ALSO27839
+Node: Texinfo::CommandsValues AUTHOR28241
+Node: Texinfo::CommandsValues COPYRIGHT AND LICENSE28544
+Node: Texinfo::Common29139
+Node: Texinfo::Common NAME29646
+Node: Texinfo::Common SYNOPSIS29887
+Node: Texinfo::Common NOTES30404
+Node: Texinfo::Common DESCRIPTION30757
+Node: Texinfo::Common MISC INFORMATION31135
+Ref: Texinfo::Common $value = get_build_constant($name)31525
+Ref: Texinfo::Common PACKAGE31590
+Ref: Texinfo::Common PACKAGE_CONFIG31611
+Ref: Texinfo::Common PACKAGE_AND_VERSION31637
+Ref: Texinfo::Common PACKAGE_AND_VERSION_CONFIG31670
+Ref: Texinfo::Common PACKAGE_NAME31689
+Ref: Texinfo::Common PACKAGE_NAME_CONFIG31715
+Ref: Texinfo::Common PACKAGE_VERSION31737
+Ref: Texinfo::Common PACKAGE_VERSION_CONFIG31766
+Ref: Texinfo::Common PACKAGE_URL31784
+Ref: Texinfo::Common PACKAGE_URL_CONFIG31809
+Ref: Texinfo::Common %document_settable_at_commands32443
+Ref: Texinfo::Common %null_device_file32590
+Ref: Texinfo::Common %texinfo_output_formats32688
+Node: Texinfo::Common @-COMMAND INFORMATION32870
+Ref: Texinfo::Common %all_commands33304
+Ref: Texinfo::Common %def_aliases33344
+Ref: Texinfo::Common %def_no_var_arg_commands33370
+Ref: Texinfo::Common %small_block_associated_command33900
+Node: Texinfo::Common METHODS33998
+Ref: Texinfo::Common $translated_string = __($msgid)34817
+Ref: Texinfo::Common $translated_string = __p($msgctxt, $msgid)34861
+Ref: Texinfo::Common collect_commands_in_tree($tree, $commands_list)36177
+Ref: Texinfo::Common collect_commands_list_in_tree($tree, $commands_list)36463
+Ref: Texinfo::Common $encoding_name = associated_processing_encoding($element)36754
+Ref: Texinfo::Common $result = element_is_inline($element, $check_current)36942
+Ref: Texinfo::Common ($encoded_file_name, $encoding) = encode_file_name($file_name, $input_encoding)37225
+Ref: Texinfo::Common $text = enumerate_item_representation($specification, $number)37724
+Ref: Texinfo::Common ($contents_element, \@accent_commands) = find_innermost_accent_contents($element)38076
+Ref: Texinfo::Common $command = find_parent_root_command($object, $tree_element)38539
+Ref: Texinfo::Common $entry_content_element = index_content_element($element, $prefer_reference_element)38864
+Ref: Texinfo::Common $encoding = input_file_name_encoding($name_encoding, $doc_encoding_for_input_file_name, $locale_encoding, $document, $input_file_encoding)39449
+Ref: Texinfo::Common $result = is_content_empty($tree, $do_not_ignore_index_entries)40223
+Ref: Texinfo::Common $file = locate_include_file($customization_information, $file_path)40471
+Ref: Texinfo::Common ($index_entry, $index_info) = lookup_index_entry($index_entry_info, $indices_information)41046
+Ref: Texinfo::Common $normalized_name = normalize_top_node_name($node_string)41894
+Ref: Texinfo::Common $result = replace_remove_list_element($array, $element, $replacement)42056
+Ref: Texinfo::Common $level = section_level($section)42332
+Ref: Texinfo::Common $element = set_global_document_command($customization_information, $global_commands_information, $cmdname, $command_location)42571
+Ref: Texinfo::Common last43150
+Ref: Texinfo::Common preamble43215
+Ref: Texinfo::Common preamble_or_first43306
+Ref: Texinfo::Common $status = set_informative_command_value($customization_information, $element)43931
+Ref: Texinfo::Common set_output_encoding($customization_information, $document)44369
+Ref: Texinfo::Common $split_contents = split_custom_heading_command_contents($element)44528
+Ref: Texinfo::Common $status = valid_customization_option($name)44938
+Ref: Texinfo::Common $status = valid_tree_transformation($name)45048
+Node: Texinfo::Common SEE ALSO45200
+Node: Texinfo::Common AUTHOR45580
+Node: Texinfo::Common COPYRIGHT AND LICENSE45838
+Node: Texinfo::Parser46395
+Node: Texinfo::Parser NAME46848
+Node: Texinfo::Parser SYNOPSIS47071
+Node: Texinfo::Parser NOTES47534
+Node: Texinfo::Parser DESCRIPTION47887
+Node: Texinfo::Parser METHODS48456
+Node: Texinfo::Parser Initialization48967
+Ref: Texinfo::Parser $parser = Texinfo::Parser::parser($options)49280
+Ref: Texinfo::Parser CPP_LINE_DIRECTIVES49506
+Ref: Texinfo::Parser EXPANDED_FORMATS49622
+Ref: Texinfo::Parser FORMAT_MENU49798
+Ref: Texinfo::Parser INCLUDE_DIRECTORIES50026
+Ref: Texinfo::Parser IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME50240
+Ref: Texinfo::Parser MAX_MACRO_CALL_NESTING50372
+Ref: Texinfo::Parser documentlanguage50487
+Ref: Texinfo::Parser values50685
+Node: Texinfo::Parser Parsing Texinfo text50814
+Ref: Texinfo::Parser $tree = $parser->parse_texi_line($text, $first_line_number)51574
+Ref: Texinfo::Parser $document = $parser->parse_texi_piece($text, $first_line_number)51862
+Ref: Texinfo::Parser $document = $parser->parse_texi_text($text, $first_line_number)52145
+Ref: Texinfo::Parser $document = $parser->parse_texi_file($file_name)52422
+Ref: Texinfo::Parser $error_warnings_list = $document->parser_errors()52731
+Node: Texinfo::Parser TEXINFO TREE53029
+Node: Texinfo::Parser Texinfo tree structure54580
+Node: Texinfo::Parser Root and first level elements55126
+Ref: Texinfo::Parser with @setfilename56170
+Ref: Texinfo::Parser without @setfilename57070
+Node: Texinfo::Parser Line command tree element58490
+Ref: Texinfo::Parser _lineraw_ line commands59010
+Ref: Texinfo::Parser regular line commands59475
+Ref: Texinfo::Parser definition line commands59943
+Node: Texinfo::Parser Block command tree element60262
+Node: Texinfo::Parser Paragraphs and preformatted63629
+Node: Texinfo::Parser Brace commands64381
+Node: Texinfo::Parser Texinfo line tree65675
+Node: Texinfo::Parser Showing the tree structure66164
+Node: Texinfo::Parser Element keys66696
+Ref: Texinfo::Parser cmdname66933
+Ref: Texinfo::Parser text67013
+Ref: Texinfo::Parser type67061
+Ref: Texinfo::Parser contents67651
+Ref: Texinfo::Parser parent67729
+Ref: Texinfo::Parser source_info67796
+Ref: Texinfo::Parser line_nr68203
+Ref: Texinfo::Parser file_name68264
+Ref: Texinfo::Parser macro68327
+Ref: Texinfo::Parser info68396
+Ref: Texinfo::Parser extra68631
+Node: Texinfo::Parser Element types68922
+Node: Texinfo::Parser Types for command and user-defined macro call elements69397
+Ref: Texinfo::Parser definfoenclose_command69992
+Ref: Texinfo::Parser index_entry_command70196
+Ref: Texinfo::Parser macro_call70527
+Ref: Texinfo::Parser macro_call_line70544
+Ref: Texinfo::Parser rmacro_call70557
+Ref: Texinfo::Parser rmacro_call_line70575
+Ref: Texinfo::Parser linemacro_call70591
+Node: Texinfo::Parser Types for text elements70899
+Ref: Texinfo::Parser after_menu_description_line71314
+Ref: Texinfo::Parser space_at_end_menu_node71338
+Ref: Texinfo::Parser delimiter71476
+Ref: Texinfo::Parser spaces71484
+Ref: Texinfo::Parser empty_line71791
+Ref: Texinfo::Parser ignorable_spaces_after_command71893
+Ref: Texinfo::Parser ignorable_spaces_before_command72162
+Ref: Texinfo::Parser bracketed_linemacro_arg72341
+Ref: Texinfo::Parser macro_call_arg_text72594
+Ref: Texinfo::Parser macro_line72845
+Ref: Texinfo::Parser other_text73058
+Ref: Texinfo::Parser spaces_after_close_brace73270
+Ref: Texinfo::Parser spaces_after_argument text73458
+Ref: Texinfo::Parser spaces_after_cmd_before_arg text73614
+Ref: Texinfo::Parser spaces_before_argument text73783
+Ref: Texinfo::Parser spaces_before_paragraph74090
+Ref: Texinfo::Parser raw74147
+Ref: Texinfo::Parser rawline_text74279
+Ref: Texinfo::Parser spaces_at_end74489
+Ref: Texinfo::Parser text_after_end74666
+Ref: Texinfo::Parser text_before_beginning74722
+Ref: Texinfo::Parser untranslated74823
+Node: Texinfo::Parser Tree container elements75021
+Ref: Texinfo::Parser before_node_section75483
+Ref: Texinfo::Parser document_root75595
+Ref: Texinfo::Parser root_line75606
+Ref: Texinfo::Parser postamble_after_end75988
+Ref: Texinfo::Parser preamble_before_beginning76075
+Ref: Texinfo::Parser preamble_before_setfilename76254
+Ref: Texinfo::Parser preamble_before_content76357
+Node: Texinfo::Parser Types of container elements76514
+Ref: Texinfo::Parser balanced_braces77388
+Ref: Texinfo::Parser before_defline77747
+Ref: Texinfo::Parser before_item77869
+Ref: Texinfo::Parser brace_container78037
+Ref: Texinfo::Parser brace_command_context78060
+Ref: Texinfo::Parser brace_arg78071
+Ref: Texinfo::Parser line_arg78081
+Ref: Texinfo::Parser block_line_arg78097
+Ref: Texinfo::Parser following_arg78112
+Ref: Texinfo::Parser bracketed_arg79521
+Ref: Texinfo::Parser def_category79620
+Ref: Texinfo::Parser def_class79631
+Ref: Texinfo::Parser def_type79641
+Ref: Texinfo::Parser def_name79651
+Ref: Texinfo::Parser def_typearg79664
+Ref: Texinfo::Parser def_arg79673
+Ref: Texinfo::Parser def_line79903
+Ref: Texinfo::Parser def_item79913
+Ref: Texinfo::Parser inter_def_item79929
+Ref: Texinfo::Parser def_line_arg80687
+Ref: Texinfo::Parser untranslated_def_line_arg80714
+Ref: Texinfo::Parser menu_comment81726
+Ref: Texinfo::Parser menu_entry82058
+Ref: Texinfo::Parser menu_entry_leading_text82083
+Ref: Texinfo::Parser menu_entry_name82100
+Ref: Texinfo::Parser menu_entry_separator82122
+Ref: Texinfo::Parser menu_entry_node82139
+Ref: Texinfo::Parser menu_entry_description82163
+Ref: Texinfo::Parser multitable_head82746
+Ref: Texinfo::Parser multitable_body82763
+Ref: Texinfo::Parser row82768
+Ref: Texinfo::Parser paragraph83041
+Ref: Texinfo::Parser preformatted83386
+Ref: Texinfo::Parser rawpreformatted83584
+Ref: Texinfo::Parser table_entry83696
+Ref: Texinfo::Parser table_term83708
+Ref: Texinfo::Parser table_definition83726
+Ref: Texinfo::Parser inter_item83738
+Node: Texinfo::Parser Information available in the info key84392
+Ref: Texinfo::Parser delimiter 184730
+Ref: Texinfo::Parser inserted84787
+Ref: Texinfo::Parser spaces_after_argument85038
+Ref: Texinfo::Parser spaces_after_cmd_before_arg85525
+Ref: Texinfo::Parser spaces_before_argument85998
+Node: Texinfo::Parser Information available in the extra key86543
+Node: Texinfo::Parser Extra keys available for more than one @-command86994
+Ref: Texinfo::Parser input_encoding_name87376
+Ref: Texinfo::Parser element_node87628
+Ref: Texinfo::Parser element_region87797
+Ref: Texinfo::Parser index_entry88020
+Ref: Texinfo::Parser index_ignore_chars89241
+Ref: Texinfo::Parser misc_args89491
+Ref: Texinfo::Parser text_arg89725
+Node: Texinfo::Parser Extra keys specific of certain @-commands or containers89925
+Ref: Texinfo::Parser @abbr90313
+Ref: Texinfo::Parser @acronym90329
+Ref: Texinfo::Parser @anchor90400
+Ref: Texinfo::Parser @float90414
+Ref: Texinfo::Parser def_line 190714
+Ref: Texinfo::Parser line definition command90739
+Ref: Texinfo::Parser @definfoenclose defined commands92010
+Ref: Texinfo::Parser @float 192154
+Ref: Texinfo::Parser @listoffloats92175
+Ref: Texinfo::Parser index entry @-command92344
+Ref: Texinfo::Parser @subentry92361
+Ref: Texinfo::Parser @inlinefmt92576
+Ref: Texinfo::Parser @inlineraw92594
+Ref: Texinfo::Parser @inlinefmtifelse92618
+Ref: Texinfo::Parser @inlineifclear92640
+Ref: Texinfo::Parser @inlineifset92660
+Ref: Texinfo::Parser @item in @enumerate or @itemize93069
+Ref: Texinfo::Parser @item and @tab in @multitable93189
+Ref: Texinfo::Parser @table93285
+Ref: Texinfo::Parser @vtable93300
+Ref: Texinfo::Parser @ftable93315
+Ref: Texinfo::Parser @kbd93596
+Ref: Texinfo::Parser @macro93681
+Ref: Texinfo::Parser menu_entry_node 193823
+Ref: Texinfo::Parser @multitable94034
+Ref: Texinfo::Parser @node94112
+Ref: Texinfo::Parser paragraph 194736
+Ref: Texinfo::Parser @ref94871
+Ref: Texinfo::Parser @xref94884
+Ref: Texinfo::Parser @pxref94898
+Ref: Texinfo::Parser @inforef94914
+Ref: Texinfo::Parser row 195139
+Ref: Texinfo::Parser sectioning command95250
+Ref: Texinfo::Parser untranslated_def_line_arg 195923
+Node: Texinfo::Parser SEE ALSO96070
+Node: Texinfo::Parser AUTHOR96357
+Node: Texinfo::Parser COPYRIGHT AND LICENSE96615
+Node: Texinfo::Document97170
+Node: Texinfo::Document NAME97616
+Node: Texinfo::Document SYNOPSIS97853
+Node: Texinfo::Document NOTES99033
+Node: Texinfo::Document DESCRIPTION99398
+Node: Texinfo::Document METHODS100059
+Node: Texinfo::Document Getting document information100660
+Ref: Texinfo::Document $tree = tree($document, $handler_only)101134
+Ref: Texinfo::Document $info = global_information($document)101708
+Ref: Texinfo::Document included_files101800
+Ref: Texinfo::Document input_encoding_name101992
+Ref: Texinfo::Document input_file_name102116
+Ref: Texinfo::Document input_directory102138
+Ref: Texinfo::Document $commands = global_commands_information($document)102845
+Ref: Texinfo::Document dircategory_direntry103277
+Ref: Texinfo::Document $identifier_target = labels_information($document)103843
+Ref: Texinfo::Document $labels_list = labels_list ($document)104026
+Ref: Texinfo::Document $float_types = floats_information($document)104350
+Ref: Texinfo::Document $internal_references_array = internal_references_information($document)105023
+Ref: Texinfo::Document $nodes_relations_list = nodes_list($document)105240
+Ref: Texinfo::Document $sections_relations_list = sections_list($document)105375
+Ref: Texinfo::Document $sectioning_root = sectioning_root($document)105507
+Ref: Texinfo::Document $indices_information = $document->indices_information()105866
+Ref: Texinfo::Document in_code105944
+Ref: Texinfo::Document name106052
+Ref: Texinfo::Document merged_in106095
+Ref: Texinfo::Document index_entries106305
+Ref: Texinfo::Document index_name106674
+Ref: Texinfo::Document entry_element106892
+Ref: Texinfo::Document entry_number107033
+Node: Texinfo::Document Merging and sorting indexes107650
+Ref: Texinfo::Document $merged_indices = $document->merged_indices()108316
+Ref: Texinfo::Document $sorted_indices = sorted_indices_by_index($document, $converter, $use_unicode_collation, $locale_lang)109190
+Ref: Texinfo::Document $sorted_indices = sorted_indices_by_letter($document, $converter, $use_unicode_collation, $locale_lang)109295
+Node: Texinfo::Document Getting errors and warnings111698
+Ref: Texinfo::Document $error_warnings_list = errors($document)112278
+Node: Texinfo::Document Getting customization options values registered in document112682
+Ref: Texinfo::Document $value = $document->get_conf($variable_name)113577
+Node: Texinfo::Document Registering information in document113761
+Ref: Texinfo::Document register_document_options ($document, $options)114227
+Ref: Texinfo::Document set_document_global_info($document, $key, $value)114920
+Node: Texinfo::Document Methods for Perl and C code interactions115362
+Ref: Texinfo::Document $perl_tree = build_tree($tree, $no_store)116602
+Ref: Texinfo::Document destroy_document($document)117796
+Node: Texinfo::Document SEE ALSO117852
+Node: Texinfo::Document AUTHOR118179
+Node: Texinfo::Document COPYRIGHT AND LICENSE118449
+Node: Texinfo::ManipulateTree119014
+Node: Texinfo::ManipulateTree NAME119525
+Node: Texinfo::ManipulateTree SYNOPSIS119811
+Node: Texinfo::ManipulateTree NOTES120097
+Node: Texinfo::ManipulateTree DESCRIPTION120498
+Node: Texinfo::ManipulateTree METHODS121009
+Ref: Texinfo::ManipulateTree move_index_entries_after_items_in_document($document)121662
+Ref: Texinfo::ManipulateTree protect_colon_in_tree($tree)121901
+Ref: Texinfo::ManipulateTree protect_node_after_label_in_tree($tree)121942
+Ref: Texinfo::ManipulateTree protect_comma_in_tree($tree)122259
+Ref: Texinfo::ManipulateTree protect_first_parenthesis($element)122369
+Ref: Texinfo::ManipulateTree relate_index_entries_to_table_items_in_document($document)122576
+Node: Texinfo::ManipulateTree SEE ALSO122744
+Node: Texinfo::ManipulateTree AUTHOR123176
+Node: Texinfo::ManipulateTree COPYRIGHT AND LICENSE123482
+Node: Texinfo::Structuring124077
+Node: Texinfo::Structuring NAME124556
+Node: Texinfo::Structuring SYNOPSIS124825
+Node: Texinfo::Structuring NOTES125661
+Node: Texinfo::Structuring DESCRIPTION126044
+Node: Texinfo::Structuring METHODS126936
+Ref: Texinfo::Structuring associate_internal_references($document)127826
+Ref: Texinfo::Structuring check_nodes_are_referenced($document)128249
+Ref: Texinfo::Structuring complete_node_tree_with_menus($document)128514
+Ref: Texinfo::Structuring check_node_tree_menu_structure($document)128653
+Ref: Texinfo::Structuring @children_nodes = get_node_node_childs_from_sectioning($node_relations)128793
+Ref: Texinfo::Structuring new_block_command($element, $command_name)129056
+Ref: Texinfo::Structuring $new_menu = new_complete_node_menu($node_relations, $lang_translations, $debug_level, $use_sections)129308
+Ref: Texinfo::Structuring $detailmenu = new_detailmenu($lang_translations, $converter, $document, $identifier_target, $nodes_list, $debug, $menus)130205
+Ref: Texinfo::Structuring $entry = new_node_menu_entry($node_relations, $use_sections)131538
+Ref: Texinfo::Structuring construct_nodes_tree($document)131813
+Ref: Texinfo::Structuring node_directions131964
+Ref: Texinfo::Structuring number_floats($float_information)132123
+Ref: Texinfo::Structuring $command_name = section_level_adjusted_command_name($element)132332
+Ref: Texinfo::Structuring sectioning_structure($document)132549
+Ref: Texinfo::Structuring section_level132762
+Ref: Texinfo::Structuring section_heading_number133019
+Ref: Texinfo::Structuring section_children133150
+Ref: Texinfo::Structuring section_directions133284
+Ref: Texinfo::Structuring toplevel_directions133414
+Ref: Texinfo::Structuring warn_non_empty_parts($document)133845
+Node: Texinfo::Structuring SEE ALSO133965
+Node: Texinfo::Structuring AUTHOR134320
+Node: Texinfo::Structuring COPYRIGHT AND LICENSE134608
+Node: Texinfo::Report135188
+Node: Texinfo::Report NAME135584
+Node: Texinfo::Report SYNOPSIS135805
+Node: Texinfo::Report NOTES136436
+Node: Texinfo::Report DESCRIPTION136789
+Node: Texinfo::Report METHODS137302
+Ref: Texinfo::Report $error_count = count_errors ($error_messages)137658
+Ref: Texinfo::Report continuation137970
+Ref: Texinfo::Report error_line138052
+Ref: Texinfo::Report file_name138153
+Ref: Texinfo::Report line_nr138227
+Ref: Texinfo::Report macro138291
+Ref: Texinfo::Report text138401
+Ref: Texinfo::Report type138446
+Ref: Texinfo::Report $message = line_warn ($text, $error_location_info, $continuation, $debug, $silent)138579
+Ref: Texinfo::Report $message = line_error ($text, $error_location_info, $continuation, $debug, $silent)138664
+Ref: Texinfo::Report $message = document_warn ($text, $program_name, $continuation)139705
+Ref: Texinfo::Report $message = document_error ($text, $program_name, $continuation)139770
+Node: Texinfo::Report AUTHOR140069
+Node: Texinfo::Report COPYRIGHT AND LICENSE140326
+Node: Texinfo::Translations140881
+Node: Texinfo::Translations NAME141372
+Node: Texinfo::Translations SYNOPSIS141656
+Node: Texinfo::Translations NOTES142272
+Node: Texinfo::Translations DESCRIPTION142661
+Node: Texinfo::Translations METHODS143175
+Ref: Texinfo::Translations configure($localesdir, $strings_textdomain)143608
+Ref: Texinfo::Translations $lang_translations = new_lang_translation($lang, $locale_encoding)144248
+Ref: Texinfo::Translations $tree = gdt($string, $lang_translations, $replaced_substrings, $translation_context, $debug_level, $object, $translate_string_method)145193
+Ref: Texinfo::Translations $string = gdt_string($string, $lang_translations, $replaced_substrings, $translation_context, $object, $translate_string_method)145323
+Ref: Texinfo::Translations $tree = pgdt($translation_context, $string, $lang_translations, $replaced_substrings, $debug_level, $object, $translate_string_method)148166
+Ref: Texinfo::Translations $translated_string_tree = cache_translate_string($string, $lang_translations, $translation_context)148645
+Node: Texinfo::Translations SEE ALSO149746
+Node: Texinfo::Translations AUTHOR150070
+Node: Texinfo::Translations COPYRIGHT AND LICENSE150364
+Node: Texinfo::Transformations150949
+Node: Texinfo::Transformations NAME151433
+Node: Texinfo::Transformations NOTES151705
+Node: Texinfo::Transformations DESCRIPTION152110
+Node: Texinfo::Transformations METHODS152846
+Ref: Texinfo::Transformations complete_tree_nodes_menus_in_document($document, $add_section_names_in_entries)153239
+Ref: Texinfo::Transformations complete_tree_nodes_missing_menu($document, $use_section_names_in_entries)153685
+Ref: Texinfo::Transformations fill_gaps_in_sectioning_in_document($document, $commands_heading_tree)154136
+Ref: Texinfo::Transformations insert_nodes_for_sectioning_commands($document)154804
+Ref: Texinfo::Transformations menu_to_simple_menu($menu)154918
+Ref: Texinfo::Transformations protect_hashchar_at_line_beginning($tree, $document)155395
+Ref: Texinfo::Transformations $modified_tree = reference_to_arg_in_tree($tree, $document)155851
+Ref: Texinfo::Transformations regenerate_master_menu($document, $use_sections)156547
+Node: Texinfo::Transformations SEE ALSO156854
+Node: Texinfo::Transformations AUTHOR157294
+Node: Texinfo::Transformations COPYRIGHT AND LICENSE157608
+Node: Texinfo::Indices158210
+Node: Texinfo::Indices NAME158653
+Node: Texinfo::Indices SYNOPSIS158889
+Node: Texinfo::Indices NOTES159734
+Node: Texinfo::Indices DESCRIPTION160095
+Node: Texinfo::Indices METHODS160947
+Ref: Texinfo::Indices $sort_string = index_entry_element_sort_string($document_info, $main_entry, $index_entry_element, $options, $prefer_reference_element)161327
+Ref: Texinfo::Indices ($text, $command) = index_entry_first_letter_text_or_command($index_entry)162523
+Ref: Texinfo::Indices $merged_indices = merge_indices($indices_information)163019
+Ref: Texinfo::Indices $option = setup_index_entry_keys_formatting($customization_information)164062
+Ref: Texinfo::Indices $index_entries_sorted = sort_indices_by_index($document, $converter, $use_unicode_collation, $locale_lang)164276
+Ref: Texinfo::Indices $index_entries_sorted = sort_indices_by_letter($document, $converter, $use_unicode_collation, $locale_lang)164385
+Node: Texinfo::Indices SEE ALSO166702
+Node: Texinfo::Indices AUTHOR167035
+Node: Texinfo::Indices COPYRIGHT AND LICENSE167301
+Node: Texinfo::OutputUnits167863
+Node: Texinfo::OutputUnits NAME168347
+Node: Texinfo::OutputUnits SYNOPSIS168613
+Node: Texinfo::OutputUnits NOTES169619
+Node: Texinfo::OutputUnits DESCRIPTION170004
+Node: Texinfo::OutputUnits METHODS172477
+Node: Texinfo::OutputUnits Output units creation172942
+Ref: Texinfo::OutputUnits unit_type173263
+Ref: Texinfo::OutputUnits unit_command173406
+Ref: Texinfo::OutputUnits unit_contents173498
+Ref: Texinfo::OutputUnits tree_unit_directions173804
+Ref: Texinfo::OutputUnits $output_units = split_by_node($document)174083
+Ref: Texinfo::OutputUnits $output_units = split_by_section($document)174506
+Node: Texinfo::OutputUnits Grouping output units in pages174809
+Ref: Texinfo::OutputUnits split_pages($output_units, $nodes_list, $split)175238
+Ref: Texinfo::OutputUnits chapter175539
+Ref: Texinfo::OutputUnits node175656
+Ref: Texinfo::OutputUnits section175719
+Ref: Texinfo::OutputUnits empty string175826
+Node: Texinfo::OutputUnits Setting output units directions175887
+Ref: Texinfo::OutputUnits units_directions($identifier_target, $nodes_list, $output_units, $print_debug)176302
+Ref: Texinfo::OutputUnits This177094
+Ref: Texinfo::OutputUnits Forward177143
+Ref: Texinfo::OutputUnits Back177176
+Ref: Texinfo::OutputUnits NodeForward177227
+Ref: Texinfo::OutputUnits NodeBack177384
+Ref: Texinfo::OutputUnits NodeUp177436
+Ref: Texinfo::OutputUnits NodeNext177451
+Ref: Texinfo::OutputUnits NodePrev177466
+Ref: Texinfo::OutputUnits Up177530
+Ref: Texinfo::OutputUnits Next177541
+Ref: Texinfo::OutputUnits Prev177552
+Ref: Texinfo::OutputUnits FastBack177625
+Ref: Texinfo::OutputUnits FastForward177974
+Ref: Texinfo::OutputUnits units_file_directions($output_units)178055
+Node: Texinfo::OutputUnits SEE ALSO178642
+Node: Texinfo::OutputUnits AUTHOR179070
+Node: Texinfo::OutputUnits COPYRIGHT AND LICENSE179360
+Node: Texinfo::Convert::Texinfo179942
+Node: Texinfo::Convert::Texinfo NAME180442
+Node: Texinfo::Convert::Texinfo SYNOPSIS180730
+Node: Texinfo::Convert::Texinfo NOTES181104
+Node: Texinfo::Convert::Texinfo DESCRIPTION181519
+Node: Texinfo::Convert::Texinfo METHODS182180
+Ref: Texinfo::Convert::Texinfo $texinfo_text = convert_to_texinfo($tree)182495
+Node: Texinfo::Convert::Texinfo AUTHOR182553
+Node: Texinfo::Convert::Texinfo COPYRIGHT AND LICENSE182872
+Node: Texinfo::Convert::Utils183479
+Node: Texinfo::Convert::Utils NAME184005
+Node: Texinfo::Convert::Utils SYNOPSIS184291
+Node: Texinfo::Convert::Utils NOTES184579
+Node: Texinfo::Convert::Utils DESCRIPTION184982
+Node: Texinfo::Convert::Utils METHODS185493
+Ref: Texinfo::Convert::Utils $result = add_heading_number($heading_element, $heading_text, $do_number, $lang_translations)186323
+Ref: Texinfo::Convert::Utils $contents_element = comma_index_subentries_tree($entry, $separator)187184
+Ref: Texinfo::Convert::Utils ($category, $class, $type, $name, $arguments) = definition_arguments_content($element)187656
+Ref: Texinfo::Convert::Utils $tree = definition_category_tree($def_line, $lang_translations, $command_line_encoding, $debug, $converter)188242
+Ref: Texinfo::Convert::Utils ($encoded_name, $encoding) = encoded_input_file_name($character_string_name, $input_file_name_encoding, $doc_encoding_for_input_file_name, $locale_encoding, $document, $input_file_encoding)189584
+Ref: Texinfo::Convert::Utils ($encoded_name, $encoding) = encoded_output_file_name($character_string_name, $output_file_name_encoding, $doc_encoding_for_output_file_name, $locale_encoding, $document)189756
+Ref: Texinfo::Convert::Utils $tree = expand_verbatiminclude($verbatiminclude, $include_directories, $name_encoding, $doc_encoding_for_input_file_name, $locale_encoding, $document, $converter)190774
+Ref: Texinfo::Convert::Utils $documentinfo_info = get_document_documentinfo($document)191639
+Node: Texinfo::Convert::Utils SEE ALSO191968
+Node: Texinfo::Convert::Utils AUTHOR192410
+Node: Texinfo::Convert::Utils COPYRIGHT AND LICENSE192718
+Node: Texinfo::Convert::Unicode193315
+Node: Texinfo::Convert::Unicode NAME193834
+Node: Texinfo::Convert::Unicode SYNOPSIS194120
+Node: Texinfo::Convert::Unicode NOTES194847
+Node: Texinfo::Convert::Unicode DESCRIPTION195262
+Node: Texinfo::Convert::Unicode METHODS196095
+Ref: Texinfo::Convert::Unicode $result = brace_no_arg_command($command_name, $encoding)196425
+Ref: Texinfo::Convert::Unicode $possible_conversion = check_unicode_point_conversion($arg, $output_debug)196765
+Ref: Texinfo::Convert::Unicode $result = encoded_accents($converter, $text, $stack, $encoding, $format_accent, $set_case)197325
+Ref: Texinfo::Convert::Unicode $width = string_width($string)198644
+Ref: Texinfo::Convert::Unicode $result = unicode_accent($text, $accent_command, $index_in_stack, $accents_stack)198930
+Ref: Texinfo::Convert::Unicode $is_decoded = unicode_point_decoded_in_encoding($encoding, $unicode_point)199373
+Ref: Texinfo::Convert::Unicode $result = unicode_text($text, $in_code)199892
+Node: Texinfo::Convert::Unicode AUTHOR200102
+Node: Texinfo::Convert::Unicode COPYRIGHT AND LICENSE200421
+Node: Texinfo::Convert::NodeNameNormalization201028
+Node: Texinfo::Convert::NodeNameNormalization NAME201672
+Node: Texinfo::Convert::NodeNameNormalization SYNOPSIS202047
+Node: Texinfo::Convert::NodeNameNormalization NOTES202725
+Node: Texinfo::Convert::NodeNameNormalization DESCRIPTION203224
+Node: Texinfo::Convert::NodeNameNormalization METHODS204553
+Ref: Texinfo::Convert::NodeNameNormalization $partially_normalized = convert_to_normalized($tree)204963
+Ref: Texinfo::Convert::NodeNameNormalization $normalized = convert_to_node_identifier($tree)205276
+Ref: Texinfo::Convert::NodeNameNormalization $normalized = convert_to_identifier($tree)205320
+Ref: Texinfo::Convert::NodeNameNormalization $transliterated = normalize_transliterate_texinfo($tree, $no_unidecode)205854
+Ref: Texinfo::Convert::NodeNameNormalization $transliterated = transliterate_texinfo($tree, $no_unidecode)206237
+Ref: Texinfo::Convert::NodeNameNormalization $file_name = transliterate_protect_file_name($string, $no_unidecode)206558
+Node: Texinfo::Convert::NodeNameNormalization AUTHOR206884
+Node: Texinfo::Convert::NodeNameNormalization COPYRIGHT AND LICENSE207287
+Node: Texinfo::Convert::Text207964
+Node: Texinfo::Convert::Text NAME208457
+Node: Texinfo::Convert::Text SYNOPSIS208724
+Node: Texinfo::Convert::Text NOTES209432
+Node: Texinfo::Convert::Text DESCRIPTION209829
+Node: Texinfo::Convert::Text METHODS210663
+Ref: Texinfo::Convert::Text $result = convert_to_text($tree, $text_options)210966
+Ref: Texinfo::Convert::Text converter211480
+Ref: Texinfo::Convert::Text enabled_encoding211733
+Ref: Texinfo::Convert::Text expanded_formats212308
+Ref: Texinfo::Convert::Text set_case212503
+Ref: Texinfo::Convert::Text sort_string212618
+Ref: Texinfo::Convert::Text $result_accent_text = ascii_accent_fallback($converter, $text, $accent_command, $index_in_stack, $accents_stack, $in_upper_case $converter)212890
+Ref: Texinfo::Convert::Text set_options_code($text_options)213506
+Ref: Texinfo::Convert::Text reset_options_code($text_options)213541
+Ref: Texinfo::Convert::Text set_options_encoding($text_options, $encoding)213896
+Ref: Texinfo::Convert::Text set_options_encoding_if_not_ascii($customization_information, $text_options)213974
+Ref: Texinfo::Convert::Text reset_options_encoding($text_options)214013
+Ref: Texinfo::Convert::Text $accents_text = text_accents($accents, $encoding, $set_case)214671
+Node: Texinfo::Convert::Text AUTHOR215135
+Node: Texinfo::Convert::Text COPYRIGHT AND LICENSE215436
+Node: Texinfo::Convert::Converter216028
+Node: Texinfo::Convert::Converter NAME216592
+Node: Texinfo::Convert::Converter SYNOPSIS216894
+Node: Texinfo::Convert::Converter NOTES218433
+Node: Texinfo::Convert::Converter DESCRIPTION218860
+Ref: Texinfo::Convert::Converter $result = $converter->convert_tree($tree)219496
+Ref: Texinfo::Convert::Converter $result = $converter->output($document)219928
+Ref: Texinfo::Convert::Converter $result = $converter->output_tree($document)219974
+Ref: Texinfo::Convert::Converter $result = $converter->convert($document)221644
+Node: Texinfo::Convert::Converter METHODS224245
+Node: Texinfo::Convert::Converter Converter Initialization225139
+Ref: Texinfo::Convert::Converter $converter = MyConverter->converter($options)225603
+Ref: Texinfo::Convert::Converter \%defaults = $converter_or_class->converter_defaults($options)226188
+Ref: Texinfo::Convert::Converter $converter->converter_initialize()226644
+Node: Texinfo::Convert::Converter Conversion226756
+Ref: Texinfo::Convert::Converter $converter->set_document($document)227420
+Ref: Texinfo::Convert::Converter $converter->conversion_initialization($document)228080
+Ref: Texinfo::Convert::Converter $converter->conversion_finalization()228119
+Ref: Texinfo::Convert::Converter $beginning = $converter->conversion_output_begin($output_file, $output_filename)229785
+Ref: Texinfo::Convert::Converter $end = $converter->conversion_output_end()229829
+Ref: Texinfo::Convert::Converter $result = $converter->convert_output_unit($output_unit)231419
+Node: Texinfo::Convert::Converter Output units and converter destruction232083
+Ref: Texinfo::Convert::Converter $converter->converter_remove_output_units()232915
+Ref: Texinfo::Convert::Converter $converter->converter_release_output_units()233339
+Ref: Texinfo::Convert::Converter $converter->destroy_converter()233678
+Ref: Texinfo::Convert::Converter $converter->converter_destroy()233856
+Node: Texinfo::Convert::Converter Getting and setting customization variables234072
+Ref: Texinfo::Convert::Converter $converter->force_conf($variable_name, $variable_value)235179
+Ref: Texinfo::Convert::Converter $converter->get_conf($variable_name)235494
+Ref: Texinfo::Convert::Converter $status = $converter->set_conf($variable_name, $variable_value)235644
+Node: Texinfo::Convert::Converter Registering error and warning messages235827
+Ref: Texinfo::Convert::Converter $converter->converter_document_error($text, $continuation)236506
+Ref: Texinfo::Convert::Converter $converter->converter_document_warn($text, $continuation)236565
+Ref: Texinfo::Convert::Converter $converter->converter_line_error($text, $error_location_info, $continuation)236855
+Ref: Texinfo::Convert::Converter $converter->converter_line_warn($text, $error_location_info, $continuation)236932
+Ref: Texinfo::Convert::Converter \@error_warning_messages = $converter->get_converter_errors()237644
+Node: Texinfo::Convert::Converter Translations in output documents237938
+Ref: Texinfo::Convert::Converter $tree = $converter->cdt($string, $replaced_substrings, $translation_context)238782
+Ref: Texinfo::Convert::Converter $string = $converter->cdt_string($string, $replaced_substrings, $translation_context)238869
+Ref: Texinfo::Convert::Converter $tree = $object->pcdt($translation_context, $string, $replaced_substrings)239900
+Node: Texinfo::Convert::Converter Index sorting240141
+Ref: Texinfo::Convert::Converter $sorted_indices = $converter->get_converter_indices_sorted_by_index()240573
+Ref: Texinfo::Convert::Converter $sorted_indices = $converter->get_converter_indices_sorted_by_letter()240645
+Node: Texinfo::Convert::Converter Accents conversion242023
+Ref: Texinfo::Convert::Converter $result = $converter->convert_accents($accent_command, \&format_accents, $output_encoded_characters, $in_upper_case)242796
+Ref: Texinfo::Convert::Converter $result = &$format_accents($self, $text, $accent_command, $index_in_stack, $accents_stack, $in_upper_case)243586
+Node: Texinfo::Convert::Converter Conversion to XML244429
+Ref: Texinfo::Convert::Converter $formatted_text = $converter->xml_format_text_with_numeric_entities($text)244970
+Ref: Texinfo::Convert::Converter $protected_text = $converter->xml_protect_text($text)245138
+Ref: Texinfo::Convert::Converter $comment = $converter->xml_comment($text)245243
+Ref: Texinfo::Convert::Converter $result = xml_accent($self, $text, $accent_command, $index_in_stack, $accents_stack, $in_upper_case, $use_numeric_entities)245410
+Ref: Texinfo::Convert::Converter $result = $converter->xml_accents($accent_command, $in_upper_case)246552
+Ref: Texinfo::Convert::Converter $result = xml_numeric_entity_accent($accent_command_name, $text)246834
+Ref: Texinfo::Convert::Converter %xml_text_entity_no_arg_commands_formatting247186
+Node: Texinfo::Convert::Converter Helper methods247469
+Ref: Texinfo::Convert::Converter $succeeded = $converter->create_destination_directory($destination_directory_path, $destination_directory_name)248439
+Ref: Texinfo::Convert::Converter ($output_file, $destination_directory, $output_filename, $document_name, $input_basefile) = $converter->determine_files_and_directory($output_format)248917
+Ref: Texinfo::Convert::Converter ($encoded_name, $encoding) = $converter->encoded_input_file_name($character_string_name, $input_file_encoding)250365
+Ref: Texinfo::Convert::Converter ($encoded_name, $encoding) = $converter->encoded_output_file_name($character_string_name)250456
+Ref: Texinfo::Convert::Converter $tree = $converter->expand_today()251296
+Ref: Texinfo::Convert::Converter ($caption, $prepended) = $converter->float_name_caption($float)251425
+Ref: Texinfo::Convert::Converter $tree = $converter->float_type_number($float)251707
+Ref: Texinfo::Convert::Converter $filename = $converter->node_information_filename($normalized, $label_element)251945
+Ref: Texinfo::Convert::Converter ($normalized_name, $filename) = $converter->normalized_sectioning_command_filename($element)252184
+Ref: Texinfo::Convert::Converter $converter->present_bug_message($message, $element)252622
+Ref: Texinfo::Convert::Converter $converter->set_global_document_commands($commands_location, $selected_commands)252823
+Ref: Texinfo::Convert::Converter before253095
+Ref: Texinfo::Convert::Converter last253205
+Ref: Texinfo::Convert::Converter preamble253270
+Ref: Texinfo::Convert::Converter preamble_or_first253361
+Ref: Texinfo::Convert::Converter $table_item_tree = $converter->table_item_content_tree($element)254139
+Ref: Texinfo::Convert::Converter $result = $converter->top_node_filename($document_name)254435
+Ref: Texinfo::Convert::Converter $tree = $converter->expand_verbatiminclude($verbatiminclude)254665
+Ref: Texinfo::Convert::Converter $result = $converter->output_internal_links()254915
+Node: Texinfo::Convert::Converter SEE ALSO255087
+Node: Texinfo::Convert::Converter AUTHOR255706
+Node: Texinfo::Convert::Converter COPYRIGHT AND LICENSE256038
+Node: Texinfo::Convert::Info256655
+Node: Texinfo::Convert::Info NAME257131
+Node: Texinfo::Convert::Info SYNOPSIS257391
+Node: Texinfo::Convert::Info NOTES257861
+Node: Texinfo::Convert::Info DESCRIPTION258258
+Node: Texinfo::Convert::Info METHODS258577
+Ref: Texinfo::Convert::Info $converter = Texinfo::Convert::Info->converter($options)258889
+Ref: Texinfo::Convert::Info $converter->output($document)259471
+Ref: Texinfo::Convert::Info $result = $converter->convert($document)259637
+Ref: Texinfo::Convert::Info $result = $converter->convert_tree($tree)259770
+Node: Texinfo::Convert::Info AUTHOR260124
+Node: Texinfo::Convert::Info COPYRIGHT AND LICENSE260425
+Node: Texinfo::Convert::HTML261017
+Node: Texinfo::Convert::HTML NAME261491
+Node: Texinfo::Convert::HTML SYNOPSIS261751
+Node: Texinfo::Convert::HTML NOTES262273
+Node: Texinfo::Convert::HTML DESCRIPTION262670
+Node: Texinfo::Convert::HTML METHODS262989
+Ref: Texinfo::Convert::HTML $converter = Texinfo::Convert::HTML->converter($options)263301
+Ref: Texinfo::Convert::HTML $converter->output($document)263883
+Ref: Texinfo::Convert::HTML $result = $converter->convert($document)264049
+Ref: Texinfo::Convert::HTML $result = $converter->convert_tree($tree)264182
+Ref: Texinfo::Convert::HTML $result = $converter->output_internal_links()264582
+Node: Texinfo::Convert::HTML AUTHOR264801
+Node: Texinfo::Convert::HTML COPYRIGHT AND LICENSE265102
+Node: Texinfo::Convert::DocBook265694
+Node: Texinfo::Convert::DocBook NAME266204
+Node: Texinfo::Convert::DocBook SYNOPSIS266485
+Node: Texinfo::Convert::DocBook NOTES266976
+Node: Texinfo::Convert::DocBook DESCRIPTION267391
+Node: Texinfo::Convert::DocBook METHODS267734
+Ref: Texinfo::Convert::DocBook $converter = Texinfo::Convert::DocBook->converter($options)268067
+Ref: Texinfo::Convert::DocBook $converter->output($document)268652
+Ref: Texinfo::Convert::DocBook $result = $converter->convert($document)268818
+Ref: Texinfo::Convert::DocBook $result = $converter->convert_tree($tree)268951
+Node: Texinfo::Convert::DocBook AUTHOR269305
+Node: Texinfo::Convert::DocBook COPYRIGHT AND LICENSE269624
+Node: Texinfo::Convert::TexinfoMarkup270231
+Node: Texinfo::Convert::TexinfoMarkup NAME270848
+Node: Texinfo::Convert::TexinfoMarkup SYNOPSIS271186
+Node: Texinfo::Convert::TexinfoMarkup NOTES271768
+Node: Texinfo::Convert::TexinfoMarkup DESCRIPTION272219
+Node: Texinfo::Convert::TexinfoMarkup METHODS273478
+Node: Texinfo::Convert::TexinfoMarkup Markup formatting methods defined by subclasses273950
+Ref: Texinfo::Convert::TexinfoMarkup $result = $converter->txi_markup_atom($atom)274457
+Ref: Texinfo::Convert::TexinfoMarkup $result = $converter->txi_markup_comment($comment_string)274681
+Ref: Texinfo::Convert::TexinfoMarkup $result = $converter->txi_markup_convert_text($element)274783
+Ref: Texinfo::Convert::TexinfoMarkup $result = $converter->txi_markup_element($format_element, $attributes)275233
+Ref: Texinfo::Convert::TexinfoMarkup $result = $converter->txi_markup_open_element($format_element, $attributes)275310
+Ref: Texinfo::Convert::TexinfoMarkup $result = $converter->txi_markup_close_element($format_element, $attributes)275388
+Ref: Texinfo::Convert::TexinfoMarkup $result = $converter->txi_markup_header()275957
+Ref: Texinfo::Convert::TexinfoMarkup $result = $converter->txi_markup_protect_text($string)276079
+Node: Texinfo::Convert::TexinfoMarkup Formatting state information276314
+Ref: Texinfo::Convert::TexinfoMarkup $converter->in_monospace()276735
+Node: Texinfo::Convert::TexinfoMarkup AUTHOR276883
+Node: Texinfo::Convert::TexinfoMarkup SEE ALSO277225
+Node: Texinfo::Convert::TexinfoMarkup COPYRIGHT AND LICENSE277801
+Node: Texinfo::Convert::TexinfoXML278440
+Node: Texinfo::Convert::TexinfoXML NAME278985
+Node: Texinfo::Convert::TexinfoXML SYNOPSIS279287
+Node: Texinfo::Convert::TexinfoXML NOTES279799
+Node: Texinfo::Convert::TexinfoXML DESCRIPTION280232
+Node: Texinfo::Convert::TexinfoXML METHODS280599
+Ref: Texinfo::Convert::TexinfoXML $converter = Texinfo::Convert::TexinfoXML->converter($options)280953
+Ref: Texinfo::Convert::TexinfoXML $converter->output($document)281541
+Ref: Texinfo::Convert::TexinfoXML $result = $converter->convert($document)281707
+Ref: Texinfo::Convert::TexinfoXML $result = $converter->convert_tree($tree)281840
+Node: Texinfo::Convert::TexinfoXML AUTHOR282194
+Node: Texinfo::Convert::TexinfoXML COPYRIGHT AND LICENSE282531
+Node: Texinfo::Convert::Plaintext283153
+Node: Texinfo::Convert::Plaintext NAME283678
+Node: Texinfo::Convert::Plaintext SYNOPSIS283973
+Node: Texinfo::Convert::Plaintext NOTES284478
+Node: Texinfo::Convert::Plaintext DESCRIPTION284905
+Node: Texinfo::Convert::Plaintext METHODS285264
+Ref: Texinfo::Convert::Plaintext $converter = Texinfo::Convert::Plaintext->converter($options)285611
+Ref: Texinfo::Convert::Plaintext $converter->output($document)286198
+Ref: Texinfo::Convert::Plaintext $result = $converter->convert($document)286364
+Ref: Texinfo::Convert::Plaintext $result = $converter->convert_tree($tree)286497
+Node: Texinfo::Convert::Plaintext AUTHOR286851
+Node: Texinfo::Convert::Plaintext COPYRIGHT AND LICENSE287182
+Node: Texinfo::TreeElement287799
+Node: Texinfo::TreeElement NAME288284
+Node: Texinfo::TreeElement SYNOPSIS288534
+Node: Texinfo::TreeElement NOTES288820
+Node: Texinfo::TreeElement DESCRIPTION289407
+Node: Texinfo::TreeElement METHODS290048
+Ref: Texinfo::TreeElement $element = new($element_hash)290323
+Ref: Texinfo::TreeElement $type = $element->type()290718
+Ref: Texinfo::TreeElement $cmdname = $element->cmdname()290800
+Ref: Texinfo::TreeElement $text = $element->text()290896
+Ref: Texinfo::TreeElement $number = $element->children_number()291023
+Ref: Texinfo::TreeElement $child = $element->get_child($index)291131
+Ref: Texinfo::TreeElement $children_list = $element->get_children()291235
+Ref: Texinfo::TreeElement $parent = $element->parent()291348
+Ref: Texinfo::TreeElement $source_info = $element->source_info()291435
+Ref: Texinfo::TreeElement $value = $element->get_attribute($attribute_name)291560
+Ref: Texinfo::TreeElement $element->add_to_element_contents($added_element)291767
+Node: Texinfo::TreeElement Texinfo::TreeElement and XS extensions291950
+Node: Texinfo::TreeElement SEE ALSO293932
+Node: Texinfo::TreeElement AUTHOR294215
+Node: Texinfo::TreeElement COPYRIGHT AND LICENSE294483
+Node: Texinfo::Reader295065
+Node: Texinfo::Reader NAME295511
+Node: Texinfo::Reader SYNOPSIS295720
+Node: Texinfo::Reader NOTES296577
+Node: Texinfo::Reader DESCRIPTION297045
+Node: Texinfo::Reader METHODS298000
+Ref: Texinfo::Reader $reader = Texinfo::Reader::new ($element)298257
+Ref: Texinfo::Reader $token = $reader->read()298363
+Ref: Texinfo::Reader element298492
+Ref: Texinfo::Reader category298544
+Ref: Texinfo::Reader TXI_READ_ELEMENT_START298953
+Ref: Texinfo::Reader TXI_READ_ELEMENT_END299080
+Ref: Texinfo::Reader TXI_READ_TEXT299267
+Ref: Texinfo::Reader TXI_READ_IGNORABLE_TEXT299332
+Ref: Texinfo::Reader TXI_READ_EMPTY299529
+Ref: Texinfo::Reader $token = $reader->skip_children($element)300082
+Ref: Texinfo::Reader $elements = reader_collect_commands_list($element, $command_names)300479
+Node: Texinfo::Reader Texinfo::Reader and XS extensions301115
+Ref: Texinfo::Reader $reader->register_token_element()302491
+Ref: Texinfo::Reader $reader->register_token_element_child($index)302622
+Node: Texinfo::Reader SEE ALSO303715
+Node: Texinfo::Reader AUTHOR304119
+Node: Texinfo::Reader COPYRIGHT AND LICENSE304357
+Node: Texinfo::Example::TreeElementConverter304914
+Node: Texinfo::Example::TreeElementConverter NAME305575
+Node: Texinfo::Example::TreeElementConverter SYNOPSIS305948
+Node: Texinfo::Example::TreeElementConverter NOTES306743
+Node: Texinfo::Example::TreeElementConverter DESCRIPTION307349
+Node: Texinfo::Example::TreeElementConverter METHODS309927
+Ref: Texinfo::Example::TreeElementConverter $converter->new_tree_element($element, $use_sv)310566
+Ref: Texinfo::Example::TreeElementConverter ($index_entry, $index_info) = $converter->get_tree_element_index_entry($element)310901
+Ref: Texinfo::Example::TreeElementConverter $element = $converter->get_global_unique_tree_element($command_name)311452
+Ref: Texinfo::Example::TreeElementConverter $elements = global_commands_information_command_list($document, $command_name)311532
+Node: Texinfo::Example::TreeElementConverter Related methods from other modules313145
+Node: Texinfo::Example::TreeElementConverter SEE ALSO314262
+Node: Texinfo::Example::TreeElementConverter AUTHOR314855
+Node: Texinfo::Example::TreeElementConverter COPYRIGHT AND LICENSE315253
+Node: Index315925
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

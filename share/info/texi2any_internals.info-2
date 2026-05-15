@@ -1,0 +1,813 @@
+This is texi2any_internals.info, produced by texi2any version 7.3+nc
+from texi2any_internals.texi.
+
+INFO-DIR-SECTION Texinfo documentation system
+START-INFO-DIR-ENTRY
+* texi2any modules: (texi2any_internals).
+                                Texinfo Perl modules used in texi2any
+END-INFO-DIR-ENTRY
+
+
+File: texi2any_internals.info,  Node: Texinfo::Reader Texinfo::Reader and XS extensions,  Up: Texinfo::Reader METHODS
+
+26.5.1 ‘Texinfo::Reader’ and XS extensions
+------------------------------------------
+
+The Texinfo Perl modules can be setup to use Perl XS module extensions
+in native code (written in C) that replace Perl package or methods by
+native code for faster execution.  In general, using pure Perl or XS
+extensions is transparent.  This is not fully the case for
+‘Texinfo::Reader’.  The XS interface is designed such that the Texinfo
+tree actually processed is not the Perl elements tree, but a tree stored
+in native code in XS extensions, corresponding to compiled C data
+structures.
+
+   If the ‘Texinfo::Reader’ XS extension is used, the element used to
+initialize the reader through *note new: Texinfo::Reader $reader =
+Texinfo::Reader::new ($element). need to have a link from Perl to native
+code C data registered in the Perl element to find the C tree data
+corresponding to the Perl element.  This is done automatically if the
+element is the Texinfo tree root element.  For other elements, this link
+may need to be setup especially.
+
+   To setup this link explicitly for the element associated to the
+current Reader token or the child elements of the current Reader token
+the following methods may be called:
+
+$reader->register_token_element()
+
+     Add a link from the current token Perl element to the associated C
+     data.
+
+$reader->register_token_element_child($index)
+
+     Add a link from the Perl element to the associated C data for the
+     child of the current token Perl element at index _$index_.  If the
+     first child of the current token Perl element is of type
+     ‘arguments_line’, the child of the ‘arguments_line’ tree element is
+     selected instead of the child of the current token Perl element.
+
+   For example, to register all the elements upon reading them:
+
+  while (1) {
+
+    my $next = $reader->read();
+    last if (!defined($next));
+
+    my $element = $next->{'element'};
+
+    my $registerd_element = $reader->register_token_element();
+
+    if (!defined($element)) {
+      $element = $registerd_element;
+    }
+
+    ...
+  }
+
+   Calling these two functions is not the only possibility to create a
+link from Perl to C data.  Another possibility is to use the *note
+Texinfo::TreeElement: Texinfo::TreeElement NAME. interface to access
+other elements from elements with the link to C data already setup, or
+to use the *note Texinfo::Example::TreeElementConverter:
+Texinfo::Example::TreeElementConverter NAME. module methods.
+
+
+File: texi2any_internals.info,  Node: Texinfo::Reader SEE ALSO,  Next: Texinfo::Reader AUTHOR,  Prev: Texinfo::Reader METHODS,  Up: Texinfo::Reader
+
+26.6 Texinfo::Reader SEE ALSO
+=============================
+
+*note Texinfo::Parser: Texinfo::Parser NAME. *note Texinfo::Document:
+Texinfo::Document NAME. *note Texinfo::Example::TreeElementConverter:
+Texinfo::Example::TreeElementConverter NAME.
+
+
+File: texi2any_internals.info,  Node: Texinfo::Reader AUTHOR,  Next: Texinfo::Reader COPYRIGHT AND LICENSE,  Prev: Texinfo::Reader SEE ALSO,  Up: Texinfo::Reader
+
+26.7 Texinfo::Reader AUTHOR
+===========================
+
+Patrice Dumas.
+
+
+File: texi2any_internals.info,  Node: Texinfo::Reader COPYRIGHT AND LICENSE,  Prev: Texinfo::Reader AUTHOR,  Up: Texinfo::Reader
+
+26.8 Texinfo::Reader COPYRIGHT AND LICENSE
+==========================================
+
+Copyright 2025- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+   This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
+
+
+File: texi2any_internals.info,  Node: Texinfo::Example::TreeElementConverter,  Next: Index,  Prev: Texinfo::Reader,  Up: Top
+
+27 Texinfo::Example::TreeElementConverter
+*****************************************
+
+* Menu:
+
+* Texinfo::Example::TreeElementConverter NAME::
+* Texinfo::Example::TreeElementConverter SYNOPSIS::
+* Texinfo::Example::TreeElementConverter NOTES::
+* Texinfo::Example::TreeElementConverter DESCRIPTION::
+* Texinfo::Example::TreeElementConverter METHODS::
+* Texinfo::Example::TreeElementConverter SEE ALSO::
+* Texinfo::Example::TreeElementConverter AUTHOR::
+* Texinfo::Example::TreeElementConverter COPYRIGHT AND LICENSE::
+
+
+File: texi2any_internals.info,  Node: Texinfo::Example::TreeElementConverter NAME,  Next: Texinfo::Example::TreeElementConverter SYNOPSIS,  Up: Texinfo::Example::TreeElementConverter
+
+27.1 Texinfo::Example::TreeElementConverter NAME
+================================================
+
+Texinfo::Example::TreeElementConverter - Parent class for TreeElement
+based converters
+
+
+File: texi2any_internals.info,  Node: Texinfo::Example::TreeElementConverter SYNOPSIS,  Next: Texinfo::Example::TreeElementConverter NOTES,  Prev: Texinfo::Example::TreeElementConverter NAME,  Up: Texinfo::Example::TreeElementConverter
+
+27.2 Texinfo::Example::TreeElementConverter SYNOPSIS
+====================================================
+
+  package Texinfo::Convert::MyConverter;
+
+  use Texinfo::Convert::Converter;
+  use Texinfo::Example::TreeElementConverter;
+  our @ISA = qw(Texinfo::Example::TreeElementConverter);
+
+  # define the methods needed for Texinfo::Convert::Converter
+
+  ...
+
+  sub convert_tree($$) {
+    ...
+  }
+
+  ...
+
+  # end of Texinfo::Convert::MyConverter
+
+  my $converter = Texinfo::Convert::MyConverter->converter();
+  $converter->output($texinfo_parsed_document);
+
+
+File: texi2any_internals.info,  Node: Texinfo::Example::TreeElementConverter NOTES,  Next: Texinfo::Example::TreeElementConverter DESCRIPTION,  Prev: Texinfo::Example::TreeElementConverter SYNOPSIS,  Up: Texinfo::Example::TreeElementConverter
+
+27.3 Texinfo::Example::TreeElementConverter NOTES
+=================================================
+
+The Texinfo Perl module main purpose is to be used in ‘texi2any’ to
+convert Texinfo to other formats.  There is no promise of API stability.
+
+   Note that this module is not used in ‘texi2any’.
+
+   Note that this module could be removed at any time.
+
+
+File: texi2any_internals.info,  Node: Texinfo::Example::TreeElementConverter DESCRIPTION,  Next: Texinfo::Example::TreeElementConverter METHODS,  Prev: Texinfo::Example::TreeElementConverter NOTES,  Up: Texinfo::Example::TreeElementConverter
+
+27.4 Texinfo::Example::TreeElementConverter DESCRIPTION
+=======================================================
+
+‘Texinfo::Example::TreeElementConverter’ is a super class that helps
+using the *note Texinfo::TreeElement: Texinfo::TreeElement NAME.
+interface in converters.  It provides implementations of methods from
+other Texinfo Perl modules using the TreeElement *note
+Texinfo::TreeElement: Texinfo::TreeElement NAME. interface only.  The
+original methods can be in the *note Texinfo::Convert::Converter:
+Texinfo::Convert::Converter NAME, *note Texinfo::Common: Texinfo::Common
+NAME, *note Texinfo::Convert::Utils: Texinfo::Convert::Utils NAME. and
+*note Texinfo::Structuring: Texinfo::Structuring NAME. modules.
+
+   The Texinfo Perl modules can be setup to use Perl XS module
+extensions in native code (written in C) that replace Perl package or
+methods by native code for faster execution.  The Texinfo modules XS
+interface is designed such that the Texinfo tree actually processed is
+not the Perl elements tree, but a tree stored in native code in XS
+extensions, corresponding to compiled C data structures.  If XS
+extensions are loaded, finding a Perl element associated C data is
+required in some cases, namely to initialize *note Texinfo::Reader
+Texinfo::Reader and XS extensions:: with XS on an element (except for
+the tree root) or to find replaced substrings elements in translations.
+
+   The ‘Texinfo::Example::TreeElementConverter’ modules helps with
+setting up the link from Perl elements to C, first by providing the
+methods using the TreeElement interface since the *note
+Texinfo::TreeElement: Texinfo::TreeElement NAME. interface automatically
+sets up this link.  The module also provides XS interfaces for methods
+also available in other modules that setup the link from Perl elements
+to C. Lastly, some methods are also available to create or access
+Texinfo tree elements that also setup Texinfo elements with the link
+from Perl elements to C.
+
+   Using the Reader, the TreeElement interface and the methods provided
+in this module with XS to access and create elements also allows to go
+through the Texinfo tree without ever building full Perl element data.
+This may be all the more important that building full Perl element data
+wipes out the link from Perl elements to C element data.
+
+
+File: texi2any_internals.info,  Node: Texinfo::Example::TreeElementConverter METHODS,  Next: Texinfo::Example::TreeElementConverter SEE ALSO,  Prev: Texinfo::Example::TreeElementConverter DESCRIPTION,  Up: Texinfo::Example::TreeElementConverter
+
+27.5 Texinfo::Example::TreeElementConverter METHODS
+===================================================
+
+The following methods allow to create new elements and get elements.  If
+XS extensions are used, elements should be created and accessed through
+these methods to have a link from Perl to C data setup for the created
+or returned element.
+
+$converter->new_tree_element($element, $use_sv)
+
+     Create a new tree elements based on the _$element_ hash reference.
+     The _$use_sv_ argument is optional; if set and XS is used, the
+     _$element_ hash reference is associated to the new tree element
+     data in C, otherwise it is discarded.
+
+($index_entry, $index_info) = $converter->get_tree_element_index_entry($element)
+
+     Finds the index entry and index information associated to the tree
+     element _$element_.  See *note Texinfo::Common lookup_index_entry:
+     Texinfo::Common ($index_entry, $index_info) =
+     lookup_index_entry($index_entry_info, $indices_information). for a
+     general description of the return values.  Note that the returned
+     _$index_info_ information does not contain the index entries
+     associated to the index, only some basic information on the index.
+
+$element = $converter->get_global_unique_tree_element($command_name)
+
+$elements = global_commands_information_command_list($document, $command_name)
+
+     Returns the tree element or tree elements corresponding to the
+     _$command_name_ @-command with a link from Perl to C element data
+     setup.  Only for @-commands that could also be accessed through
+     *note Texinfo::Document global_commands_information:
+     Texinfo::Document $commands =
+     global_commands_information($document). (if the link from Perl to C
+     element data was not needed).
+
+     ‘get_global_unique_tree_element’ should be called for @-commands
+     that should appear only once in a Texinfo document.  This method
+     returns the element.
+
+     ‘global_commands_information_command_list’ requires a
+     ‘Texinfo::Document’ _$document_ argument.  The _$document_ could be
+     available as ‘$converter->{'document'}’.  This method should be
+     called for @-commands that may appear more than once in a Texinfo
+     document.  This method returns a reference on the array of all the
+     _$command_name_ @-command tree elements appearing in the document.
+
+   The other methods are documented in the modules that provide the
+non-TreeElement interface or the methods that do not setup elements with
+link from Perl to C element data.  The method name is either the same as
+in this module, if the method is used as a wrapper around the method
+with the same name, or can be obtained by removing a leading
+‘tree_element_’.  For example, the ‘index_content_element’ documentation
+can be used for the ‘tree_element_index_content_element’ method of this
+module.
+
+* Menu:
+
+* Texinfo::Example::TreeElementConverter Related methods from other modules::
+
+
+File: texi2any_internals.info,  Node: Texinfo::Example::TreeElementConverter Related methods from other modules,  Up: Texinfo::Example::TreeElementConverter METHODS
+
+27.5.1 Related methods from other modules
+-----------------------------------------
+
+To associate sectioning commands and nodes tree elements Perl to C data,
+the ‘register_document_relations_lists_elements’ ‘Texinfo::Document’
+method may be called after getting the tree before starting the tree
+conversion, such that sectioning commands and nodes elements accessed
+through nodes and section relations have the association to C data
+already setup:
+
+  $converter->{'document'}->register_document_relations_lists_elements()
+
+   If you use the *note Texinfo::Reader: Texinfo::Reader NAME. to go
+through the tree you can call reader methods to associate Perl to C data
+based on the current element being read, *note Texinfo::Reader
+‘register_token_element’: Texinfo::Reader
+$reader->register_token_element(). and *note Texinfo::Reader
+‘register_token_element_child’: Texinfo::Reader
+$reader->register_token_element_child($index).
+
+
+File: texi2any_internals.info,  Node: Texinfo::Example::TreeElementConverter SEE ALSO,  Next: Texinfo::Example::TreeElementConverter AUTHOR,  Prev: Texinfo::Example::TreeElementConverter METHODS,  Up: Texinfo::Example::TreeElementConverter
+
+27.6 Texinfo::Example::TreeElementConverter SEE ALSO
+====================================================
+
+*note Texinfo::Convert::Converter: Texinfo::Convert::Converter NAME,
+*note Texinfo::Common: Texinfo::Common NAME, *note
+Texinfo::Convert::Utils: Texinfo::Convert::Utils NAME. and *note
+Texinfo::Structuring: Texinfo::Structuring NAME.
+
+
+File: texi2any_internals.info,  Node: Texinfo::Example::TreeElementConverter AUTHOR,  Next: Texinfo::Example::TreeElementConverter COPYRIGHT AND LICENSE,  Prev: Texinfo::Example::TreeElementConverter SEE ALSO,  Up: Texinfo::Example::TreeElementConverter
+
+27.7 Texinfo::Example::TreeElementConverter AUTHOR
+==================================================
+
+Patrice Dumas, <bug-texinfo@gnu.org>
+
+
+File: texi2any_internals.info,  Node: Texinfo::Example::TreeElementConverter COPYRIGHT AND LICENSE,  Prev: Texinfo::Example::TreeElementConverter AUTHOR,  Up: Texinfo::Example::TreeElementConverter
+
+27.8 Texinfo::Example::TreeElementConverter COPYRIGHT AND LICENSE
+=================================================================
+
+Copyright 2011- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+   This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 3 of the License, or (at your
+option) any later version.
+
+
+File: texi2any_internals.info,  Node: Index,  Prev: Texinfo::Example::TreeElementConverter,  Up: Top
+
+Appendix A Index
+****************
+
+ [index ]
+* Menu:
+
+* %accent_commands:                      Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line  13)
+* %all_commands:                         Texinfo::Common @-COMMAND INFORMATION.
+                                                              (line  13)
+* %block_commands:                       Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line  18)
+* %blockitem_commands:                   Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line  83)
+* %brace_code_commands:                  Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line  88)
+* %brace_commands:                       Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line  93)
+* %close_paragraph_commands:             Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line  99)
+* %commands_args_number:                 Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 104)
+* %contain_basic_inline_commands:        Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 119)
+* %contain_plain_text:                   Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 124)
+* %def_aliases:                          Texinfo::Common @-COMMAND INFORMATION.
+                                                              (line  19)
+* %def_commands:                         Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 129)
+* %def_no_var_arg_commands:              Texinfo::Common @-COMMAND INFORMATION.
+                                                              (line  19)
+* %default_index_commands:               Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 133)
+* %explained_commands:                   Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 138)
+* %formattable_line_commands:            Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 143)
+* %formatted_line_commands:              Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 160)
+* %formatted_nobrace_commands:           Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 152)
+* %heading_spec_commands:                Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 169)
+* %in_heading_spec_commands:             Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 173)
+* %index_names:                          Texinfo::Commands @-COMMAND INFORMATION.
+                                                              (line  10)
+* %inline_conditional_commands:          Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 185)
+* %inline_format_commands:               Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 185)
+* %letter_no_arg_commands:               Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 190)
+* %line_commands:                        Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 199)
+* %math_commands:                        Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 195)
+* %no_paragraph_commands:                Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 210)
+* %nobrace_commands:                     Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 214)
+* %nobrace_symbol_text:                  Texinfo::CommandsValues @-COMMAND ASSOCIATED INFORMATION.
+                                                              (line  10)
+* %non_formatted_block_commands:         Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 225)
+* %preamble_commands:                    Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 235)
+* %preformatted_code_commands:           Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 241)
+* %preformatted_commands:                Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 241)
+* %ref_commands:                         Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 248)
+* %root_commands:                        Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 253)
+* %sectioning_heading_commands:          Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 258)
+* %small_block_associated_command:       Texinfo::Common @-COMMAND INFORMATION.
+                                                              (line  30)
+* %texinfo_output_formats:               Texinfo::Common MISC INFORMATION.
+                                                              (line  55)
+* %text_brace_no_arg_commands:           Texinfo::CommandsValues @-COMMAND ASSOCIATED INFORMATION.
+                                                              (line  16)
+* %unicode_diacritics:                   Texinfo::CommandsValues @-COMMAND ASSOCIATED INFORMATION.
+                                                              (line  21)
+* %variadic_commands:                    Texinfo::Commands @-COMMAND CLASSES.
+                                                              (line 262)
+* %xml_text_entity_no_arg_commands_formatting: Texinfo::Convert::Converter Conversion to XML.
+                                                              (line  59)
+* add_heading_number:                    Texinfo::Convert::Utils METHODS.
+                                                              (line  17)
+* add_to_element_contents:               Texinfo::TreeElement METHODS.
+                                                              (line  57)
+* ascii_accent_fallback:                 Texinfo::Convert::Text METHODS.
+                                                              (line  54)
+* associate_internal_references:         Texinfo::Structuring METHODS.
+                                                              (line  18)
+* associated_processing_encoding:        Texinfo::Common METHODS.
+                                                              (line  58)
+* brace_no_arg_command:                  Texinfo::Convert::Unicode METHODS.
+                                                              (line   7)
+* build_tree:                            Texinfo::Document Methods for Perl and C code interactions.
+                                                              (line  23)
+* cache_translate_string:                Texinfo::Translations METHODS.
+                                                              (line 107)
+* cdt:                                   Texinfo::Convert::Converter Translations in output documents.
+                                                              (line  18)
+* cdt_string:                            Texinfo::Convert::Converter Translations in output documents.
+                                                              (line  18)
+* check_node_tree_menu_structure:        Texinfo::Structuring METHODS.
+                                                              (line  40)
+* check_nodes_are_referenced:            Texinfo::Structuring METHODS.
+                                                              (line  27)
+* check_unicode_point_conversion:        Texinfo::Convert::Unicode METHODS.
+                                                              (line  14)
+* children_number:                       Texinfo::TreeElement METHODS.
+                                                              (line  30)
+* cmdname:                               Texinfo::TreeElement METHODS.
+                                                              (line  21)
+* collect_commands_in_tree:              Texinfo::Common METHODS.
+                                                              (line  44)
+* collect_commands_list_in_tree:         Texinfo::Common METHODS.
+                                                              (line  51)
+* comma_index_subentries_tree:           Texinfo::Convert::Utils METHODS.
+                                                              (line  34)
+* complete_node_tree_with_menus:         Texinfo::Structuring METHODS.
+                                                              (line  35)
+* complete_tree_nodes_menus_in_document: Texinfo::Transformations METHODS.
+                                                              (line   9)
+* complete_tree_nodes_missing_menu:      Texinfo::Transformations METHODS.
+                                                              (line  18)
+* construct_nodes_tree:                  Texinfo::Structuring METHODS.
+                                                              (line 101)
+* conversion_finalization:               Texinfo::Convert::Converter Conversion.
+                                                              (line  29)
+* conversion_initialization:             Texinfo::Convert::Converter Conversion.
+                                                              (line  29)
+* conversion_output_begin:               Texinfo::Convert::Converter Conversion.
+                                                              (line  61)
+* conversion_output_end:                 Texinfo::Convert::Converter Conversion.
+                                                              (line  61)
+* convert:                               Texinfo::Convert::Converter DESCRIPTION.
+                                                              (line  59)
+* convert_accents:                       Texinfo::Convert::Converter Accents conversion.
+                                                              (line  13)
+* convert_output_unit:                   Texinfo::Convert::Converter Conversion.
+                                                              (line  91)
+* convert_to_identifier:                 Texinfo::Convert::NodeNameNormalization METHODS.
+                                                              (line  17)
+* convert_to_node_identifier:            Texinfo::Convert::NodeNameNormalization METHODS.
+                                                              (line  17)
+* convert_to_normalized:                 Texinfo::Convert::NodeNameNormalization METHODS.
+                                                              (line   7)
+* convert_to_texinfo:                    Texinfo::Convert::Texinfo METHODS.
+                                                              (line   7)
+* convert_to_text:                       Texinfo::Convert::Text METHODS.
+                                                              (line   7)
+* convert_tree:                          Texinfo::Convert::Converter DESCRIPTION.
+                                                              (line  13)
+* converter:                             Texinfo::Convert::Converter Converter Initialization.
+                                                              (line   6)
+* converter <1>:                         Texinfo::Convert::Converter Converter Initialization.
+                                                              (line  11)
+* converter_defaults:                    Texinfo::Convert::Converter Converter Initialization.
+                                                              (line  25)
+* converter_destroy:                     Texinfo::Convert::Converter Output units and converter destruction.
+                                                              (line  42)
+* converter_document_error:              Texinfo::Convert::Converter Registering error and warning messages.
+                                                              (line  14)
+* converter_document_warn:               Texinfo::Convert::Converter Registering error and warning messages.
+                                                              (line  14)
+* converter_initialize:                  Texinfo::Convert::Converter Converter Initialization.
+                                                              (line  35)
+* converter_line_error:                  Texinfo::Convert::Converter Registering error and warning messages.
+                                                              (line  24)
+* converter_line_warn:                   Texinfo::Convert::Converter Registering error and warning messages.
+                                                              (line  24)
+* converter_release_output_units:        Texinfo::Convert::Converter Output units and converter destruction.
+                                                              (line  26)
+* create_destination_directory:          Texinfo::Convert::Converter Helper methods.
+                                                              (line  17)
+* definition_arguments_content:          Texinfo::Convert::Utils METHODS.
+                                                              (line  43)
+* definition_category_tree:              Texinfo::Convert::Utils METHODS.
+                                                              (line  53)
+* destroy_converter:                     Texinfo::Convert::Converter Output units and converter destruction.
+                                                              (line  16)
+* destroy_converter <1>:                 Texinfo::Convert::Converter Output units and converter destruction.
+                                                              (line  35)
+* destroy_document:                      Texinfo::Document Methods for Perl and C code interactions.
+                                                              (line  48)
+* determine_files_and_directory:         Texinfo::Convert::Converter Helper methods.
+                                                              (line  25)
+* document_error:                        Texinfo::Report METHODS.
+                                                              (line  75)
+* document_warn:                         Texinfo::Report METHODS.
+                                                              (line  75)
+* element_is_inline:                     Texinfo::Common METHODS.
+                                                              (line  63)
+* encoded_accents:                       Texinfo::Convert::Unicode METHODS.
+                                                              (line  24)
+* encoded_input_file_name:               Texinfo::Convert::Utils METHODS.
+                                                              (line  77)
+* encoded_input_file_name <1>:           Texinfo::Convert::Converter Helper methods.
+                                                              (line  52)
+* encoded_output_file_name:              Texinfo::Convert::Utils METHODS.
+                                                              (line  77)
+* encoded_output_file_name <1>:          Texinfo::Convert::Converter Helper methods.
+                                                              (line  52)
+* enumerate_item_representation:         Texinfo::Common METHODS.
+                                                              (line  79)
+* expand_verbatiminclude:                Texinfo::Convert::Utils METHODS.
+                                                              (line  93)
+* expand_verbatiminclude <1>:            Texinfo::Convert::Converter Helper methods.
+                                                              (line 155)
+* fill_gaps_in_sectioning_in_document:   Texinfo::Transformations METHODS.
+                                                              (line  27)
+* find_innermost_accent_contents:        Texinfo::Common METHODS.
+                                                              (line  89)
+* find_parent_root_command:              Texinfo::Common METHODS.
+                                                              (line  98)
+* float_name_caption:                    Texinfo::Convert::Converter Helper methods.
+                                                              (line  74)
+* float_type_number:                     Texinfo::Convert::Converter Helper methods.
+                                                              (line  81)
+* floats_information:                    Texinfo::Document Getting document information.
+                                                              (line  94)
+* force_conf:                            Texinfo::Convert::Converter Getting and setting customization variables.
+                                                              (line  19)
+* gdt:                                   Texinfo::Translations METHODS.
+                                                              (line  46)
+* gdt_string:                            Texinfo::Translations METHODS.
+                                                              (line  46)
+* get_attribute:                         Texinfo::TreeElement METHODS.
+                                                              (line  51)
+* get_child:                             Texinfo::TreeElement METHODS.
+                                                              (line  34)
+* get_children:                          Texinfo::TreeElement METHODS.
+                                                              (line  38)
+* get_conf:                              Texinfo::Convert::Converter Getting and setting customization variables.
+                                                              (line  26)
+* get_converter_errors:                  Texinfo::Convert::Converter Registering error and warning messages.
+                                                              (line  38)
+* get_converter_indices_sorted_by_index: Texinfo::Convert::Converter Index sorting.
+                                                              (line  11)
+* get_converter_indices_sorted_by_letter: Texinfo::Convert::Converter Index sorting.
+                                                              (line  11)
+* get_document_documentinfo:             Texinfo::Convert::Utils METHODS.
+                                                              (line 109)
+* get_global_unique_tree_element:        Texinfo::Example::TreeElementConverter METHODS.
+                                                              (line  32)
+* get_node_node_childs_from_sectioning:  Texinfo::Structuring METHODS.
+                                                              (line  44)
+* get_tree_element_index_entry:          Texinfo::Example::TreeElementConverter METHODS.
+                                                              (line  19)
+* global_commands_information:           Texinfo::Document Getting document information.
+                                                              (line  58)
+* global_commands_information_command_list: Texinfo::Example::TreeElementConverter METHODS.
+                                                              (line  32)
+* global_information:                    Texinfo::Document Getting document information.
+                                                              (line  26)
+* index_entry_element_sort_string:       Texinfo::Indices METHODS.
+                                                              (line   9)
+* indices_information:                   Texinfo::Document Getting document information.
+                                                              (line 133)
+* input_file_encoding:                   Texinfo::Common METHODS.
+                                                              (line 115)
+* insert_nodes_for_sectioning_commands:  Texinfo::Transformations METHODS.
+                                                              (line  42)
+* internal_references_information:       Texinfo::Document Getting document information.
+                                                              (line 108)
+* is_content_empty:                      Texinfo::Common METHODS.
+                                                              (line 129)
+* labels_information:                    Texinfo::Document Getting document information.
+                                                              (line  80)
+* labels_list:                           Texinfo::Document Getting document information.
+                                                              (line  85)
+* line_error:                            Texinfo::Report METHODS.
+                                                              (line  51)
+* line_warn:                             Texinfo::Report METHODS.
+                                                              (line  51)
+* locate_include_file:                   Texinfo::Common METHODS.
+                                                              (line 135)
+* menu_to_simple_menu:                   Texinfo::Transformations METHODS.
+                                                              (line  47)
+* merge_indices:                         Texinfo::Indices METHODS.
+                                                              (line  43)
+* merged_indices:                        Texinfo::Document Merging and sorting indexes.
+                                                              (line  13)
+* move_index_entries_after_items_in_document: Texinfo::ManipulateTree METHODS.
+                                                              (line  13)
+* new:                                   Texinfo::TreeElement METHODS.
+                                                              (line   7)
+* new_block_command:                     Texinfo::Structuring METHODS.
+                                                              (line  51)
+* new_complete_node_menu:                Texinfo::Structuring METHODS.
+                                                              (line  56)
+* new_detailmenu:                        Texinfo::Structuring METHODS.
+                                                              (line  71)
+* new_lang_translation:                  Texinfo::Translations METHODS.
+                                                              (line  25)
+* new_node_menu_entry:                   Texinfo::Structuring METHODS.
+                                                              (line  94)
+* new_tree_element:                      Texinfo::Example::TreeElementConverter METHODS.
+                                                              (line  12)
+* node_information_filename:             Texinfo::Convert::Converter Helper methods.
+                                                              (line  87)
+* normalize_top_node_name:               Texinfo::Common METHODS.
+                                                              (line 161)
+* normalize_transliterate_texinfo:       Texinfo::Convert::NodeNameNormalization METHODS.
+                                                              (line  27)
+* normalized_sectioning_command_filename: Texinfo::Convert::Converter Helper methods.
+                                                              (line  92)
+* number_floats:                         Texinfo::Structuring METHODS.
+                                                              (line 111)
+* output:                                Texinfo::Convert::Converter DESCRIPTION.
+                                                              (line  25)
+* output_internal_links:                 Texinfo::Convert::Converter Helper methods.
+                                                              (line 163)
+* output_internal_links <1>:             Texinfo::Convert::HTML METHODS.
+                                                              (line  39)
+* output_tree:                           Texinfo::Convert::Converter DESCRIPTION.
+                                                              (line  25)
+* parent:                                Texinfo::TreeElement METHODS.
+                                                              (line  43)
+* parse_texi_file:                       Texinfo::Parser Parsing Texinfo text.
+                                                              (line  41)
+* parse_texi_line:                       Texinfo::Parser Parsing Texinfo text.
+                                                              (line  17)
+* parse_texi_piece:                      Texinfo::Parser Parsing Texinfo text.
+                                                              (line  25)
+* parse_texi_text:                       Texinfo::Parser Parsing Texinfo text.
+                                                              (line  33)
+* Parser initialization:                 Texinfo::Parser Initialization.
+                                                              (line  10)
+* parser_errors:                         Texinfo::Parser Parsing Texinfo text.
+                                                              (line  49)
+* pcdt:                                  Texinfo::Convert::Converter Translations in output documents.
+                                                              (line  38)
+* pgdt:                                  Texinfo::Translations METHODS.
+                                                              (line  97)
+* present_bug_message:                   Texinfo::Convert::Converter Helper methods.
+                                                              (line 101)
+* protect_colon_in_tree:                 Texinfo::ManipulateTree METHODS.
+                                                              (line  21)
+* protect_comma_in_tree:                 Texinfo::ManipulateTree METHODS.
+                                                              (line  28)
+* protect_first_parenthesis:             Texinfo::ManipulateTree METHODS.
+                                                              (line  32)
+* protect_hashchar_at_line_beginning:    Texinfo::Transformations METHODS.
+                                                              (line  59)
+* protect_node_after_label_in_tree:      Texinfo::ManipulateTree METHODS.
+                                                              (line  21)
+* read:                                  Texinfo::Reader METHODS.
+                                                              (line  12)
+* reference_to_arg_in_tree:              Texinfo::Transformations METHODS.
+                                                              (line  68)
+* regenerate_master_menu:                Texinfo::Transformations METHODS.
+                                                              (line  82)
+* register_document_options:             Texinfo::Document Registering information in document.
+                                                              (line   9)
+* relate_index_entries_to_table_items_in_document: Texinfo::ManipulateTree METHODS.
+                                                              (line  37)
+* reset_options_code:                    Texinfo::Convert::Text METHODS.
+                                                              (line  68)
+* reset_options_encoding:                Texinfo::Convert::Text METHODS.
+                                                              (line  81)
+* section_level:                         Texinfo::Common METHODS.
+                                                              (line 173)
+* section_level_adjusted_command_name:   Texinfo::Structuring METHODS.
+                                                              (line 116)
+* sectioning_structure:                  Texinfo::Structuring METHODS.
+                                                              (line 122)
+* set_conf:                              Texinfo::Convert::Converter Getting and setting customization variables.
+                                                              (line  31)
+* set_document:                          Texinfo::Convert::Converter Conversion.
+                                                              (line  13)
+* set_document_global_info:              Texinfo::Document Registering information in document.
+                                                              (line  22)
+* set_global_document_command:           Texinfo::Common METHODS.
+                                                              (line 178)
+* set_global_document_commands:          Texinfo::Convert::Converter Helper methods.
+                                                              (line 106)
+* set_informative_command_value:         Texinfo::Common METHODS.
+                                                              (line 212)
+* set_options_code:                      Texinfo::Convert::Text METHODS.
+                                                              (line  68)
+* set_options_encoding:                  Texinfo::Convert::Text METHODS.
+                                                              (line  81)
+* set_options_encoding_if_not_ascii:     Texinfo::Convert::Text METHODS.
+                                                              (line  81)
+* set_output_encoding:                   Texinfo::Common METHODS.
+                                                              (line 221)
+* setup_index_entry_keys_formatting:     Texinfo::Indices METHODS.
+                                                              (line  63)
+* skip_children:                         Texinfo::Reader METHODS.
+                                                              (line  65)
+* sort_indices_by_index:                 Texinfo::Indices METHODS.
+                                                              (line  70)
+* sort_indices_by_letter:                Texinfo::Indices METHODS.
+                                                              (line  70)
+* sorted_indices_by_index:               Texinfo::Document Merging and sorting indexes.
+                                                              (line  33)
+* sorted_indices_by_letter:              Texinfo::Document Merging and sorting indexes.
+                                                              (line  33)
+* source_info:                           Texinfo::TreeElement METHODS.
+                                                              (line  47)
+* split_by_node:                         Texinfo::OutputUnits Output units creation.
+                                                              (line  33)
+* split_by_section:                      Texinfo::OutputUnits Output units creation.
+                                                              (line  43)
+* split_custom_heading_command_contents: Texinfo::Common METHODS.
+                                                              (line 226)
+* split_pages:                           Texinfo::OutputUnits Grouping output units in pages.
+                                                              (line   9)
+* string_width:                          Texinfo::Convert::Unicode METHODS.
+                                                              (line  50)
+* table_item_content_tree:               Texinfo::Convert::Converter Helper methods.
+                                                              (line 142)
+* Texinfo tree element extra key:        Texinfo::Parser Information available in the extra key.
+                                                              (line   6)
+* Texinfo tree element structure:        Texinfo::Parser Element keys.
+                                                              (line   6)
+* Texinfo tree elements:                 Texinfo::Parser TEXINFO TREE.
+                                                              (line   6)
+* Texinfo::Convert::Converter initialization: Texinfo::Convert::Converter Converter Initialization.
+                                                              (line   6)
+* Texinfo::Parser::parser:               Texinfo::Parser Initialization.
+                                                              (line  10)
+* Texinfo::Reader::new:                  Texinfo::Reader METHODS.
+                                                              (line   7)
+* text:                                  Texinfo::TreeElement METHODS.
+                                                              (line  25)
+* text_accents:                          Texinfo::Convert::Text METHODS.
+                                                              (line  94)
+* top_node_filename:                     Texinfo::Convert::Converter Helper methods.
+                                                              (line 149)
+* transliterate_protect_file_name:       Texinfo::Convert::NodeNameNormalization METHODS.
+                                                              (line  42)
+* transliterate_texinfo:                 Texinfo::Convert::NodeNameNormalization METHODS.
+                                                              (line  35)
+* tree:                                  Texinfo::Document Getting document information.
+                                                              (line  13)
+* type:                                  Texinfo::TreeElement METHODS.
+                                                              (line  17)
+* unicode_accent:                        Texinfo::Convert::Unicode METHODS.
+                                                              (line  56)
+* unicode_point_decoded_in_encoding:     Texinfo::Convert::Unicode METHODS.
+                                                              (line  65)
+* unicode_text:                          Texinfo::Convert::Unicode METHODS.
+                                                              (line  77)
+* units_directions:                      Texinfo::OutputUnits Setting output units directions.
+                                                              (line   9)
+* units_file_directions:                 Texinfo::OutputUnits Setting output units directions.
+                                                              (line  76)
+* valid_option:                          Texinfo::Common METHODS.
+                                                              (line 235)
+* valid_tree_transformation:             Texinfo::Common METHODS.
+                                                              (line 239)
+* warn_non_empty_parts:                  Texinfo::Structuring METHODS.
+                                                              (line 161)
+* xml_accent:                            Texinfo::Convert::Converter Conversion to XML.
+                                                              (line  24)
+* xml_accents:                           Texinfo::Convert::Converter Conversion to XML.
+                                                              (line  44)
+* xml_comment:                           Texinfo::Convert::Converter Conversion to XML.
+                                                              (line  20)
+* xml_format_text_with_numeric_entities: Texinfo::Convert::Converter Conversion to XML.
+                                                              (line  11)
+* xml_numeric_entity_accent:             Texinfo::Convert::Converter Conversion to XML.
+                                                              (line  50)
+* xml_protect_text:                      Texinfo::Convert::Converter Conversion to XML.
+                                                              (line  16)
+
