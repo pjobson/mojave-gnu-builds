@@ -35,6 +35,39 @@ chsh -s /opt/bin/bash
 
 Then next time you open a terminal it'll be using the `/opt/bin/bash` shell.
 
+## .bashrc / .profile
+
+There's some difference as to when macOS uses one or the other. As far as I can tell it uses `.profile` for terminal sessions and ssh'ing into the host. It uses `.bashrc` if you use screen. My workaround is just adding `source ~/.profile` to the `.bashrc` file. You could also symlink them or whatever.
+
+I also like to add some nice-to-haves in mine.
+
+```bash
+# Parses the git brach, if there is one.
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+# Parses term or tty
+# I use this to determine if I'm in a screen or logged in
+parse_term_or_tty() {
+    if [ $STY ]
+    then
+        echo " [$STY]"
+    else
+        echo " [$TERM]"
+    fi
+}
+
+# Custom PS1 prompt      
+#                         +-- terminal or tty name
+#                         V
+# pjobson@macprintserver [xterm-256color]
+# ~/code/project (main) $ 
+#                ^
+#                +-- branch name
+export PS1="\[$(tput setaf 2)\]\u\[$(tput setaf 7)\]@\[$(tput setaf 165)\]\h\e[31m\]\$(parse_term_or_tty)\n\[\e[94m\]\w\[\e[m\]\[\e[33m\]\$(parse_git_branch)\[\e[m\] \\$ "
+```
+
 ## Setup
 
 Run my `pre-install.sh` and `post-install.sh` scripts or do it manually.
