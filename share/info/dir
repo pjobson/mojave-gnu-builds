@@ -33,6 +33,9 @@ Software libraries
 * mpfr: (mpfr).                 Multiple Precision Floating-Point Reliable 
                                   Library.
 
+System administration
+* Which: (which).               Show full path of commands.
+
 Texinfo documentation system
 * Texinfo: (texinfo).           The GNU documentation format.
 * info stand-alone: (info-stnd).
