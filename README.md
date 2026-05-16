@@ -79,10 +79,6 @@ sudo ln -s /opt/bin/python3.14 /opt/bin/python3
 source ~/.profile
 ```
 
-## Note
-
-There is a method to the madness of the order of these. As I was attempting to do the full build, I kept hitting dependency issues, the latter ones all depend on the earlier ones to build.
-
 ## M4-1.4.21
 
 ```bash
@@ -571,22 +567,16 @@ cd ~/code
 rm -rf make*
 ```
 
-## GCC-14.3.0 + GMP-6.3.0 + MPFR-4.2.2 + MPC-1.3.1
-
-Note: Building GCC can take a VERY long time, especially if you're trying to do it on a MacBookPro 11,1 w/ a dual core i5-4258U.
-
-Both GCC 16.x/15.x wouldn't really install so I am using 14.x.
+## GMP-6.3.0 + MPFR-4.2.2 + MPC-1.3.1
 
 ```bash
 curl -O https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.gz
 curl -O https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.2.tar.gz
 curl -O https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz
-curl -O https://ftp.gnu.org/gnu/gcc/gcc-14.3.0/gcc-14.3.0.tar.gz
 
 tar xzvf gmp-6.3.0.tar.gz
 tar xzvf mpfr-4.2.2.tar.gz
 tar xzvf mpc-1.3.1.tar.gz
-tar xzvf gcc-14.3.0.tar.gz
 
 cd gmp-6.3.0
 ./configure --prefix=/opt
@@ -607,25 +597,8 @@ cd ~/code/mpc-1.3.1
 make -j"$(sysctl -n hw.ncpu)"
 sudo make install
 
-mkdir ~/code/gcc-14.3.0-build
-cd ~/code/gcc-14.3.0-build
-
-../gcc-14.3.0/configure \
-  --prefix=/opt --program-suffix=-14 \
-  --enable-languages=c,c++ --disable-multilib \
-  --with-gmp=/opt --with-mpfr=/opt --with-mpc=/opt \
-  --with-system-zlib \
-  --with-sysroot=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
-
-make -j$(sysctl -n hw.ncpu) \
-  AR=/usr/bin/ar             RANLIB=/usr/bin/ranlib \
-  AR_FOR_BUILD=/usr/bin/ar   RANLIB_FOR_BUILD=/usr/bin/ranlib \
-  AR_FOR_TARGET=/usr/bin/ar  RANLIB_FOR_TARGET=/usr/bin/ranlib
-
-sudo make install-strip
-
-cd ~/code
-rm -rf gmp* mpfr* mpc* gcc*
+mkdir ~/code
+rm -rf gmp* mpfr* mpc*
 ```
 
 ## Python-3.14.5
@@ -691,3 +664,19 @@ sudo make install
 cd ~/code
 rm -rf which*
 ```
+
+## Htop-3.5.1
+
+```bash
+curl https://codeload.github.com/htop-dev/htop/zip/refs/tags/3.5.1 -o htop-3.5.1.zip
+unzip htop-3.5.1.zip
+cd htop-3.5.1/
+./autogen.sh
+./configure --prefix=/opt
+make -j"$(sysctl -n hw.ncpu)"
+sudo make install
+sudo ln -s /opt/bin/htop /opt/bin/top
+cd ~/code
+rm -rf htop*
+```
+
