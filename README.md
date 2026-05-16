@@ -715,3 +715,28 @@ cd ~/code
 rm -rf htop*
 ```
 
+## vim-9.2.0488
+
+```bash
+curl https://codeload.github.com/vim/vim/zip/refs/tags/v9.2.0488 -o vim-9.2.0488.zip
+unzip vim-9.2.0488.zip
+./configure --prefix=/opt
+make -j"$(sysctl -n hw.ncpu)"
+sudo make install
+sudo ln -s /opt/bin/vim /opt/bin/vi
+cd ~/code
+rm -rf vim*
+```
+
+## Nano-9.0
+
+```bash
+curl -O https://ftp.gnu.org/gnu/nano/nano-9.0.tar.gz
+tar xzvf nano-9.0.tar.gz
+cd nano-9.0
+./configure --prefix=/opt
+make -j"$(sysctl -n hw.ncpu)"
+sudo make install
+cd ~/code
+rm -rf nano*
+```
