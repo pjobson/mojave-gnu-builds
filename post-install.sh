@@ -22,3 +22,5 @@ sudo ln -s /opt/bin/python3.14 /opt/bin/python3
 
 source ~/.profile
 
+sudo /opt/bin/ssh-keygen -v -A
+
