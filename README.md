@@ -15,8 +15,10 @@ This installs everything in `/opt`, I did this to keep all of this completely se
 ### Option 1: Easy
 
 * Clone the repo
-* Run my `setup.sh` script, don't run as root/sudo.
+* Run `pre-install.sh` script, don't run as root/sudo.
 * Move everything from the clone into `/opt`
+* Run `post-install.sh` script, again not as root/sudo.
+* Open a new terminal.
 
 ### Option 2: DIY
 
