@@ -20,6 +20,9 @@ Archiving
 Compression
 * Gzip: (gzip).                 General (de)compression of files (lzw).
 
+Editors
+* nano: (nano).                 Small and friendly text editor.
+
 GNU libraries
 * gmp: (gmp).                   GNU Multiple Precision Arithmetic Library.
 
